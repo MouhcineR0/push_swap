@@ -3,7 +3,7 @@ SRC = libft/ft_isalpha.c libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c libf
 	libft/ft_putendl_fd.c libft/ft_putnbr_fd.c libft/ft_putstr_fd.c libft/ft_strchr.c libft/ft_strdup.c libft/ft_striteri.c libft/ft_strjoin.c \
 	libft/ft_strlcat.c libft/ft_strlcpy.c libft/ft_strlen.c libft/ft_strmapi.c libft/ft_strncmp.c libft/ft_strnstr.c libft/ft_strrchr.c \
 	libft/ft_strtrim.c libft/ft_substr.c libft/ft_tolower.c libft/ft_toupper.c libft/ft_split.c \
-	printf/helper00.c printf/ft_putunsigned.c printf/ft_convertbase.c printf/ft_printf.c printf/ft_putnbr_fd_i.c
+	printf/helper00.c printf/ft_putunsigned.c printf/ft_convertbase.c printf/ft_printf.c printf/ft_putnbr_fd_i.c main.c
 
 
 FLAGS = -Wall -Wextra -Werror
@@ -23,10 +23,10 @@ OBJS = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
+	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
 %.o : %.c $(LIBFT) $(PRINTFLIB) 
 	$(CC) $(FLAGS) -c $< -o $@
-	ar rcs $(NAME) $@
 
 clean :
 	rm -f $(OBJS)
