@@ -26,6 +26,7 @@ int *fill(char **a,int *stack_a,int length) // fill in the stack a
 		{
 			if (!isNumber(*split))
 				return (0);
+			stack_a[j] = ft_atoi(*split);
 			(split)++;
 			j++;
 		}
@@ -70,14 +71,20 @@ int main(int argc, char const *argv[])
 	int	arr_len;
 
 	arr_len = verify_args((char **)argv,argc);
-	ft_printf("%d",arr_len);
 	if (arr_len)
 	{
 		stack_a = (int *)malloc(sizeof(int) * arr_len);
 		stack_b = (int *)malloc(sizeof(int) * arr_len);
 		if (!stack_a || !stack_b)
 			return RaiseError();
-		Sort(fill(argv,stack_a,argc),stack_b,arr_len);
+		// Sort(fill(argv,stack_a,argc),stack_b,arr_len);
+		fill((char **)argv,stack_a,argc);
+		int i = 0;
+		while (i < arr_len)
+		{
+			ft_printf("%d ",stack_a[i]);
+			i++;
+		}
 		free(stack_a);
 	}
 	else
