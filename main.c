@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/06 20:17:02 by rmouhcin          #+#    #+#             */
+/*   Updated: 2024/12/06 22:42:15 by rmouhcin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int isNumber(char *str)
@@ -60,7 +72,7 @@ int verify_args(char **a, int length) // verifying and calculates the length of 
 
 int RaiseError()
 {
-	ft_putstr_fd("Error",2);
+	ft_putstr_fd("Error\n",2);
 	return 0;
 }
 
@@ -68,23 +80,22 @@ int main(int argc, char const *argv[])
 {
 	int *stack_a;
 	int *stack_b;
-	int	arr_len;
+	int	stack_a_len;
+	int	stack_b_len;
 
-	arr_len = verify_args((char **)argv,argc);
-	if (arr_len)
+	if (argc == 1)
+		return (0);
+	stack_a_len = verify_args((char **)argv,argc);
+	if (stack_a_len)
 	{
-		stack_a = (int *)malloc(sizeof(int) * arr_len);
-		stack_b = (int *)malloc(sizeof(int) * arr_len);
+		stack_a = (int *)malloc(sizeof(int) * stack_a_len);
+		stack_b = (int *)malloc(sizeof(int) * stack_a_len);
 		if (!stack_a || !stack_b)
 			return RaiseError();
-		// Sort(fill(argv,stack_a,argc),stack_b,arr_len);
+		// Sort(fill((char **)argv,stack_a,argc),stack_b,stack_a_len);
 		fill((char **)argv,stack_a,argc);
-		int i = 0;
-		while (i < arr_len)
-		{
-			ft_printf("%d ",stack_a[i]);
-			i++;
-		}
+		sa(stack_a,stack_a_len);
+		printarray(stack_a,stack_a_len);
 		free(stack_a);
 	}
 	else
