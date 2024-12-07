@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:47:29 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/06 19:34:38 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/07 11:30:11 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ int		convert_base_pointer(unsigned long p,
 			char **str, char *format, int *i);
 int		ft_printf(const char *str, ...);
 void	ft_putnbr_fd_i(int n, int fd, int *i);
-void	printarray(int *arr,int len);
+void	lst_print(int *arr,int len);
 
 #endif

@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printarray.c                                       :+:      :+:    :+:   */
+/*   lst_push.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 19:32:14 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/07 11:29:47 by rmouhcin         ###   ########.fr       */
+/*   Created: 2024/12/07 11:44:45 by rmouhcin          #+#    #+#             */
+/*   Updated: 2024/12/07 13:21:24 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	lst_print(int *arr,int len)
+void	lst_push(int *arr, int nb,int length)
 {
 	int	i;
 
-	i = 0;
-	ft_printf("[");
-	while (i < len)
+	if (length)
 	{
-		ft_printf(" %d ",arr[i]);
-		if (i + 1 != len)
-			ft_printf(",");
-		i++;
+		i = 0;
+		while (length--)
+			arr[length + 1] = arr[length];
 	}
-	ft_printf("]");
+	arr[length] = nb;
+	// ft_printf("[%d]",arr[length]);
+	// lst_print(arr,3);
 }

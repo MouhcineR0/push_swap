@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:29:13 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/06 13:51:01 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/07 13:21:17 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "../printf/ft_printf.h"
 
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
@@ -51,5 +52,6 @@ void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
+void		lst_push(int *arr, int nb,int length);
 
 #endif

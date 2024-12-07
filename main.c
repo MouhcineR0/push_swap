@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 20:17:02 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/06 22:42:15 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/07 13:22:19 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int main(int argc, char const *argv[])
 	int	stack_a_len;
 	int	stack_b_len;
 
+	stack_b_len = 0;
 	if (argc == 1)
 		return (0);
 	stack_a_len = verify_args((char **)argv,argc);
@@ -94,8 +95,8 @@ int main(int argc, char const *argv[])
 			return RaiseError();
 		// Sort(fill((char **)argv,stack_a,argc),stack_b,stack_a_len);
 		fill((char **)argv,stack_a,argc);
-		sa(stack_a,stack_a_len);
-		printarray(stack_a,stack_a_len);
+		pb(stack_a,stack_b,&stack_a_len,&stack_b_len);
+		lst_print(stack_a,stack_a_len);
 		free(stack_a);
 	}
 	else
