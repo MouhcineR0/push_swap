@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 20:17:02 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/07 13:22:19 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/07 19:18:46 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,9 @@ int main(int argc, char const *argv[])
 			return RaiseError();
 		// Sort(fill((char **)argv,stack_a,argc),stack_b,stack_a_len);
 		fill((char **)argv,stack_a,argc);
-		pb(stack_a,stack_b,&stack_a_len,&stack_b_len);
+		rra(stack_a,stack_a_len);
 		lst_print(stack_a,stack_a_len);
+		lst_print(stack_b,stack_b_len);
 		free(stack_a);
 	}
 	else

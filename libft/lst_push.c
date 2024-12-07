@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 11:44:45 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/07 13:21:24 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/07 15:13:20 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@ void	lst_push(int *arr, int nb,int length)
 {
 	int	i;
 
-	if (length)
+	if (length > 1)
 	{
 		i = 0;
-		while (length--)
+		while (length)
+		{
+			length--;	
 			arr[length + 1] = arr[length];
+		}
 	}
 	arr[length] = nb;
-	// ft_printf("[%d]",arr[length]);
-	// lst_print(arr,3);
 }
