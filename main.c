@@ -6,14 +6,36 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 20:17:02 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/08 12:11:48 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/08 20:04:48 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int is_duplicated(int *stack,int length)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i + 1 < length)
+	{
+		j = i + 1;
+		while (j < length)
+		{
+			if (stack[i] == stack[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 int isNumber(char *str)
 {
+	if (*str == '-' || *str == '+')
+		str++;
 	while (*str)
 	{
 		if (!ft_isdigit((int)*str))
@@ -93,9 +115,12 @@ int main(int argc, char const *argv[])
 		stack_b = (int *)malloc(sizeof(int) * stack_a_len);
 		if (!stack_a || !stack_b)
 			return RaiseError();
-		// Sort(fill((char **)argv,stack_a,argc),stack_b,stack_a_len);
 		fill((char **)argv,stack_a,argc);
-		ft_printf("%d - ",is_sorted(stack_a,stack_a_len));
+		if (is_duplicated(stack_a,stack_a_len))
+			return (RaiseError());
+		lst_print(stack_a,stack_a_len);
+		lst_print(stack_b,stack_b_len);
+		Sort(stack_a,stack_b,&stack_a_len,&stack_b_len);
 		lst_print(stack_a,stack_a_len);
 		lst_print(stack_b,stack_b_len);
 		free(stack_a);

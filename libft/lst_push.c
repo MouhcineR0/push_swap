@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 11:44:45 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/07 15:13:20 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/08 19:34:33 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	lst_push(int *arr, int nb,int length)
 {
 	int	i;
 
-	if (length > 1)
+	if (length >= 1)
 	{
 		i = 0;
 		while (length)
