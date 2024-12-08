@@ -6,11 +6,15 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 20:24:15 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/07 19:50:42 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/08 11:02:03 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+
+// https://www.tldraw.com/r/Y9XJlB37C9Znpv8uH_FhE?d=v-2461.7794.7568.10624.page
+
 
 // sa swap first 2 elements in stack a
 // sb swap first 2 elements in stack b

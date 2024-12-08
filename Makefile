@@ -4,7 +4,7 @@ SRC = libft/ft_isalpha.c libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c libf
 	libft/ft_strlcat.c libft/ft_strlcpy.c libft/ft_strlen.c libft/ft_strmapi.c libft/ft_strncmp.c libft/ft_strnstr.c libft/ft_strrchr.c \
 	libft/ft_strtrim.c libft/ft_substr.c libft/ft_tolower.c libft/ft_toupper.c libft/ft_split.c libft/lst_push.c \
 	printf/helper00.c printf/ft_putunsigned.c printf/ft_convertbase.c printf/ft_printf.c printf/ft_putnbr_fd_i.c printf/printarray.c \
-	main.c Instructions/Instruction1.c
+	main.c Instructions/Instruction1.c isSorted.c
 
 
 FLAGS = -Wall -Wextra -Werror
