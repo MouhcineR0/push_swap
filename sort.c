@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 11:57:59 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/08 20:50:36 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:09:07 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,31 @@ int lst_min(int *lst,int length)
 	if (length)
 	{
 		i = 0;
-		min = lst[i];
 		while (i < length)
 		{
 			if (lst[i] < min)
-				min = lst[i];
+				min = i;
 			i++;
 		}
 		return min;
+	}
+	return -1;
+}
+int lst_max(int *lst,int length)
+{
+	int i;
+	int max;
+
+	if (length)
+	{
+		i = 0;
+		while (i < length)
+		{
+			if (lst[i] > lst[max])
+				max = i;
+			i++;
+		}
+		return max;
 	}
 	return -1;
 }
@@ -67,6 +84,8 @@ int non_sortedasc_index(int *lst,int length)
 			return i;
 		i++;
 	}
+	if (lst[i] < lst[i - 1])
+		return (++i);
 	return -1;
 }
 int non_sorteddisc_index(int *lst,int length)
@@ -96,8 +115,6 @@ int many_notsorted_asc(int *arr,int length)
 			many++;
 		i++;
 	}
-	if (arr[i] > arr[i - 1])
-		many++;
 	return many;
 }
 
@@ -106,40 +123,26 @@ int many_notsorted_asc(int *arr,int length)
 // ==> method 2 n9smu array 3la joj , w nsortiw manuel 3la 7asab chnu khaso ytsorta b swap only
 // nhzu lmin f stack a w f stack b bach nsiviw start index dyalhum w ncheckiw kola mera wach msorti
 // ncheckiw ta wach 1 li b9a lina mamsortich ye3ni rah kolchi m9ad
+
+// method 3 nhzo ga3 les elemets dyal a w n7tuhum f b w nhzzo kola mra lwlani b 
+// w n7tuh f list khawya a 3la 7asab wach kbira wla sghira
+
+// method 4 kola mera n9leb 3la lmin f stack b w npushih f stack a
+
+// method 5 n handliw kola size bo7do ===>
+// length 3 : nhard codiw
+// length 4 - 5 : nlo7o f stack b samllets 2 number or 1 w dok 3  nhadliwhum b tari9a lwlaniya
+// length > 5 ncatiw kola part w nhandliwhum
+
 void	Sort(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len)
-{
-	int stack_a_index;
-	int stack_b_index;
-	if (*stack_a_len > 2)
-	{
-		if (is_sorted(stack_a,*stack_a_len) == -1)
-			return ;
-		separate_arr(stack_a,stack_b,stack_a_len,stack_b_len);
-		while (1)
-		{
-			stack_a_index = non_sortedasc_index(stack_a,*stack_a_len) + 1;
-			stack_b_index = non_sorteddisc_index(stack_b,*stack_b_len) + 1;
-			if (stack_a_index != -1 && many_notsorted_asc(stack_a,*stack_a_len) != 1)
-			{
-				while (stack_a_index)
-				{
-					ft_printf("%d",stack_a_index);
-					ra(stack_a,*stack_a_len);
-					stack_a_index--;
-				}
-				sa(stack_a,*stack_a_len);
-			}
-			// break;
-			ft_printf("==> ");
-			lst_print(stack_a,*stack_a_len);
-			if (many_notsorted_asc(stack_a,*stack_a_len) == 1)
-				break;
-			// else if (stack_a_index != -1)
-			// {
-				
-			// }
-			// else
-			// break;
-		}
-	}
+{	
+	if (is_sorted(stack_a,*stack_a_len) == -1)
+		return ;
+	if (*stack_a_len == 2)
+		return lst_case_2(stack_a,*stack_a_len);
+	if (*stack_a_len == 3)
+		return lst_case_3(stack_a,*stack_a_len);
+	if (*stack_a_len == 4 || *stack_a_len == 5)
+		return lst_case_4_5(stack_a,stack_b,stack_a_len,stack_b_len);
+		
 }
