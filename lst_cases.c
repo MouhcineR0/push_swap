@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:56:18 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/10 15:22:57 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:09:22 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@
 void	lst_case_2(int *stack,int length)
 {
 	if (stack[0] > stack[1])
-		sa(stack,length);
+		sa(stack,length),ft_printf("sa");
 }
 void	lst_case_3(int *stack,int length)
 {
 	if (stack[0] > stack[1] && stack[1] > stack[2]) // 3 2 1
-		sa(stack,length),rra(stack,length),ft_printf("s");
+		sa(stack,length),rra(stack,length),ft_printf("sa ");
 	else if (stack[0] < stack[1] && stack[1] > stack[2] && stack[0] > stack[2]) // 2 3 1
 		rra(stack,length),ft_printf("l");
 	else if (stack[0] > stack[1] && stack[1] < stack[2] && stack[0] > stack[2]) // 3 1 2
@@ -88,8 +88,13 @@ void	lst_case_5(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len)
 	pb(stack_a,stack_b,stack_a_len,stack_b_len);
 	lst_print(stack_a,*stack_a_len);
 	lst_case_4_5(stack_a,stack_b,stack_a_len,stack_b_len);
-	// ft_printf("==> ");
-	// lst_print(stack_a,*stack_a_len);
-	// lst_print(stack_b,*stack_b_len);
 	pa(stack_a,stack_b,stack_a_len,stack_b_len);
+}
+
+void lst_large_case(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len)
+{
+	int *sorted_lst;
+
+	sorted_lst = (int *)malloc(*stack_a_len * sizeof(int));
+	sorted_lst = lst_sort(stack_a,*stack_a_len);
 }
