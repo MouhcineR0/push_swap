@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:56:18 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/10 19:09:22 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/10 21:32:34 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,6 @@ void	lst_case_4_5(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len)
 		}
 		pb(stack_a,stack_b,stack_a_len,stack_b_len);
 		lst_case_3(stack_a,*stack_a_len);
-		ft_printf("==> ");
-	lst_print(stack_a,*stack_a_len);
-	lst_print(stack_b,*stack_b_len);
 		pa(stack_a,stack_b,stack_a_len,stack_b_len);
 	}
 	else
@@ -86,15 +83,15 @@ void	lst_case_5(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len)
 			ra(stack_a,*stack_a_len);
 	}
 	pb(stack_a,stack_b,stack_a_len,stack_b_len);
-	lst_print(stack_a,*stack_a_len);
 	lst_case_4_5(stack_a,stack_b,stack_a_len,stack_b_len);
 	pa(stack_a,stack_b,stack_a_len,stack_b_len);
 }
-
+// devide by shunks method
 void lst_large_case(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len)
 {
-	int *sorted_lst;
+	t_stack sorted_lst;
 
-	sorted_lst = (int *)malloc(*stack_a_len * sizeof(int));
-	sorted_lst = lst_sort(stack_a,*stack_a_len);
+	sorted_lst.arr = (int *)malloc(*stack_a_len * sizeof(int));
+	lst_cpy(stack_a,sorted_lst.arr,*stack_a_len),lst_sort(sorted_lst.arr,*stack_a_len);
+	
 }

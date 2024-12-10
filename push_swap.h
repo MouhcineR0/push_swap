@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:08:42 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/10 15:04:46 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/10 20:47:29 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 #include "printf/ft_printf.h"
 #include "libft/libft.h"
 #include <fcntl.h>
+
+typedef struct t_stack {
+	int *arr;
+	int length;
+} t_stack ;
 
 void	sa(int	*stack_a,int length);
 void	sb(int	*stack_b,int length);
@@ -34,5 +39,6 @@ void	lst_case_2(int *stack,int length);
 void	lst_case_3(int *stack,int length);
 void	lst_case_4_5(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len);
 void	lst_case_5(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len);
+void lst_large_case(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len);
 
 #endif

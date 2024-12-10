@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_sort.c                                         :+:      :+:    :+:   */
+/*   lst_cpy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/10 19:07:05 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/10 20:14:17 by rmouhcin         ###   ########.fr       */
+/*   Created: 2024/12/10 20:27:11 by rmouhcin          #+#    #+#             */
+/*   Updated: 2024/12/10 20:28:50 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	lst_sort(int *lst,int length)
+void	lst_cpy(int *original_lst,int *new_lst,int length)
 {
-	int sorted;
 	int i;
-	int tmp;
 
-	sorted = 0;
-	while (!sorted)
+	i = 0;
+	while (i < length)
 	{
-		i = 0;
-		sorted = 1;
-		while (i + 1 < length)
-		{
-			if (lst[i] >= lst[i + 1])
-			{
-				tmp = lst[i];
-				lst[i] = lst[i + 1];
-				lst[i + 1] = tmp;
-				sorted = 0;
-			}
-			i++;
-		}
+		new_lst[i] = original_lst[i];
+		i++;
 	}
 }
