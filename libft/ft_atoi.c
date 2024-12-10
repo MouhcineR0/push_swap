@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:14:32 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/11/03 19:53:56 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/10 11:13:10 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	getsign(const char **str)
 	return (sign);
 }
 
-int	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
 	int			sign;
 	long long	result;

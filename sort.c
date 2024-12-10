@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 11:57:59 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/09 20:09:07 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:10:08 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ int lst_min(int *lst,int length)
 	if (length)
 	{
 		i = 0;
+		min = i;
 		while (i < length)
 		{
-			if (lst[i] < min)
+			if (lst[i] < lst[min])
 				min = i;
 			i++;
 		}
@@ -140,9 +141,10 @@ void	Sort(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len)
 		return ;
 	if (*stack_a_len == 2)
 		return lst_case_2(stack_a,*stack_a_len);
-	if (*stack_a_len == 3)
+	else if (*stack_a_len == 3)
 		return lst_case_3(stack_a,*stack_a_len);
-	if (*stack_a_len == 4 || *stack_a_len == 5)
+	else if (*stack_a_len == 4 || *stack_a_len == 5)
 		return lst_case_4_5(stack_a,stack_b,stack_a_len,stack_b_len);
+	// else :
 		
 }

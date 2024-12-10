@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:08:42 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/09 19:58:26 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:04:46 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	Sort(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len);
 int lst_min(int *lst,int length);
 int many_notsorted_asc(int *arr,int length);
 void	lst_case_2(int *stack,int length);
-
+void	lst_case_3(int *stack,int length);
+void	lst_case_4_5(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len);
+void	lst_case_5(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len);
 
 #endif
