@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 11:57:59 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/11 13:53:01 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/11 19:37:51 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ int many_notsorted_asc(int *arr,int length)
 
 void	Sort(t_stack *a,t_stack *b)
 {
-	ft_printf("%d",a->length);
 	if (is_sorted(a->arr,a->length) == -1)
 		return ;
 	if (a->length == 2)
