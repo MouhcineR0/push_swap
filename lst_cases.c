@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:56:18 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/10 21:32:34 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/10 21:45:17 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,4 @@ void lst_large_case(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len)
 
 	sorted_lst.arr = (int *)malloc(*stack_a_len * sizeof(int));
 	lst_cpy(stack_a,sorted_lst.arr,*stack_a_len),lst_sort(sorted_lst.arr,*stack_a_len);
-	
 }

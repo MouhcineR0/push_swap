@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:08:42 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/10 20:47:29 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/11 10:06:12 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ typedef struct t_stack {
 	int *arr;
 	int length;
 } t_stack ;
+
+typedef struct t_shunk {
+	int elem1;
+	int elem2;
+	int elem3;
+	int length; // length of shrunk
+	int current_index; // current index of the original list
+} t_shunk ;
 
 void	sa(int	*stack_a,int length);
 void	sb(int	*stack_b,int length);

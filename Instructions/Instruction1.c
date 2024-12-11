@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 20:24:15 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/08 19:29:22 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/11 09:51:43 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	sa(int	*stack_a,int stack_a_len)
 		tmp = stack_a[0];
 		stack_a[0] = stack_a[1];
 		stack_a[1] = tmp;
-		// ft_printf("sa\n");   // write this after calling the functions
 	}
 }
 void	sb(int	*stack_b,int stack_a_len)
@@ -49,7 +48,6 @@ void	sb(int	*stack_b,int stack_a_len)
 		tmp = stack_b[0];
 		stack_b[0] = stack_b[1];
 		stack_b[1] = tmp;
-		// ft_printf("sb\n");
 	}
 }
 void	ss(int *stack_a, int *stack_b , int stack_a_len, int stack_b_len)
@@ -94,81 +92,3 @@ void	pb(int *stack_a, int *stack_b, int *stack_a_len, int *stack_b_len) // push 
 		(*stack_a_len)--;
 	}
 }
-
-//  Shift up all elements of the stack The first element becomes the last one
-
-void	ra(int *stack,int length)
-{
-	int	i;
-	int	tmp;
-
-	i = 0;
-	if (length > 1)
-	{
-		tmp = stack[0];
-		while (i + 1 < length)
-		{
-			stack[i] = stack[i + 1];
-			i++;
-		}
-		stack[i] = tmp;
-	}
-}
-void	rb(int *stack,int length)
-{
-	int	i;
-	int	tmp;
-
-	if (length > 1)
-	{
-		i = 0;
-		tmp = stack[0];
-		while (i + 1 < length)
-		{
-			stack[i] = stack[i + 1];
-			i++;
-		}
-		stack[i] = tmp;
-	}
-}
-
-// rr : ra and rb at the same time.
-
-void rra(int *stack,int length)
-{
-	int	tmp;
-	int	i;
-
-	if (length > 1)
-	{
-		i = 1;
-		tmp = stack[length-- - 1];
-		while (length)
-		{
-			stack[length] = stack[length - 1];
-			i++;
-			length--;
-		}
-		stack[0] = tmp;
-	}
-}
-void rrb(int *stack,int length)
-{
-	int	tmp;
-	int	i;
-
-	if (length > 1)
-	{
-		i = 1;
-		tmp = stack[length-- - 1];
-		while (length)
-		{
-			stack[length] = stack[length - 1];
-			i++;
-			length--;
-		}
-		stack[0] = tmp;
-	}
-}
-
-// rrr : rra and rrb at the same time.
