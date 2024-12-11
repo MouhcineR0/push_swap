@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 20:24:15 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/11 09:51:43 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:37:33 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,67 +28,67 @@
 // rrb Shift down all elements of stack b by 1 The last element becomes the first one.
 // rrr rra + rrb
 
-void	sa(int	*stack_a,int stack_a_len)
+void	sa(t_stack *a)
 {
 	int	tmp;
 	
-	if (stack_a_len >= 2)
+	if (a->length >= 2)
 	{
-		tmp = stack_a[0];
-		stack_a[0] = stack_a[1];
-		stack_a[1] = tmp;
+		tmp = a->arr[0];
+		a->arr[0] = a->arr[1];
+		a->arr[1] = tmp;
 	}
 }
-void	sb(int	*stack_b,int stack_a_len)
+void	sb(t_stack *b)
 {
 	int	tmp;
 	
-	if (stack_a_len >= 2)
+	if (b->length >= 2)
 	{
-		tmp = stack_b[0];
-		stack_b[0] = stack_b[1];
-		stack_b[1] = tmp;
+		tmp = b->arr[0];
+		b->arr[0] = b->arr[1];
+		b->arr[1] = tmp;
 	}
 }
-void	ss(int *stack_a, int *stack_b , int stack_a_len, int stack_b_len)
+void	ss(t_stack *a,t_stack *b)
 {
-	sa(stack_a,stack_a_len),sb(stack_b,stack_b_len);
+	sa(a),sb(b);
 }
 
-void	pa(int *stack_a, int *stack_b, int *stack_a_len, int *stack_b_len) // push in stack a
+void	pa(t_stack *a,t_stack *b) // push in stack a
 {
 	int	i;
 
 	i = 1;
-	if (*stack_b_len)
+	if (b->length)
 	{
-		lst_push(stack_a,stack_b[0],*stack_a_len);
-		while (i < *stack_b_len)
+		lst_push(a->arr,b->arr[0],a->length);
+		while (i < b->length)
 		{
-			stack_b[i - 1] = stack_b[i];
+			b->arr[i - 1] = b->arr[i];
 			i++;
 		}
-		stack_b[--i] = 0;
-		(*stack_a_len)++;
-		(*stack_b_len)--;
+		b->arr[--i] = 0;
+		(a->length)++;
+		(b->length)--;
 	}
 	
 }
-void	pb(int *stack_a, int *stack_b, int *stack_a_len, int *stack_b_len) // push in stack b
+void	pb(t_stack *a,t_stack *b) // push in stack b
 {
 	int	i;
 
 	i = 1;
-	if (*stack_a_len)
+	if (a->length)
 	{
-		lst_push(stack_b,stack_a[0],*stack_b_len);
-		while (i < *stack_a_len)
+		lst_push(b->arr,a->arr[0],b->length);
+		while (i < a->length)
 		{
-			stack_a[i - 1] = stack_a[i];
+			a->arr[i - 1] = a->arr[i];
 			i++;
 		}
-		stack_a[--i] = 0;
-		(*stack_b_len)++;
-		(*stack_a_len)--;
+		a->arr[--i] = 0;
+		(b->length)++;
+		(a->length)--;
 	}
 }

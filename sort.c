@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 11:57:59 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/10 20:18:04 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:53:01 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,6 @@
 // rrb Shift down all elements of stack b by 1 The last element becomes the first one.
 // rrr rra + rrb
 
-void	separate_arr(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len)
-{
-	int i;
-
-	i = (*stack_a_len) / 2;
-	while (i)
-	{
-		pb(stack_a,stack_b,stack_a_len,stack_b_len);
-		i--;
-	}
-}
 
 int lst_min(int *lst,int length)
 {
@@ -135,16 +124,17 @@ int many_notsorted_asc(int *arr,int length)
 // length 4 - 5 : nlo7o f stack b samllets 2 number or 1 w dok 3  nhadliwhum b tari9a lwlaniya
 // length > 5 ncatiw kola part w nhandliwhum
 
-void	Sort(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len)
-{	
-	if (is_sorted(stack_a,*stack_a_len) == -1)
+void	Sort(t_stack *a,t_stack *b)
+{
+	ft_printf("%d",a->length);
+	if (is_sorted(a->arr,a->length) == -1)
 		return ;
-	if (*stack_a_len == 2)
-		return lst_case_2(stack_a,*stack_a_len);
-	else if (*stack_a_len == 3)
-		return lst_case_3(stack_a,*stack_a_len);
-	else if (*stack_a_len == 4 || *stack_a_len == 5)
-		return lst_case_4_5(stack_a,stack_b,stack_a_len,stack_b_len);
+	if (a->length == 2)
+		return lst_case_2(a);
+	else if (a->length == 3)
+		return lst_case_3(a);
+	else if (a->length == 4 || a->length == 5)
+		return lst_case_4_5(a,b);
 	else
-		lst_large_case(stack_a,stack_b,stack_a_len,stack_b_len);
+		lst_large_case(a,b);
 }

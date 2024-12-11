@@ -6,86 +6,90 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 09:50:22 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/11 09:52:37 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:18:03 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ra(int *stack,int length)
+void	ra(t_stack *a)
 {
 	int	i;
 	int	tmp;
 
 	i = 0;
-	if (length > 1)
+	if (a->length > 1)
 	{
-		tmp = stack[0];
-		while (i + 1 < length)
+		tmp = a->arr[0];
+		while (i + 1 < a->length)
 		{
-			stack[i] = stack[i + 1];
+			a->arr[i] = a->arr[i + 1];
 			i++;
 		}
-		stack[i] = tmp;
+		a->arr[i] = tmp;
 	}
 }
-void	rb(int *stack,int length)
+void	rb(t_stack *b)
 {
 	int	i;
 	int	tmp;
 
-	if (length > 1)
+	if (b->length > 1)
 	{
 		i = 0;
-		tmp = stack[0];
-		while (i + 1 < length)
+		tmp = b->arr[0];
+		while (i + 1 < b->length)
 		{
-			stack[i] = stack[i + 1];
+			b->arr[i] = b->arr[i + 1];
 			i++;
 		}
-		stack[i] = tmp;
+		b->arr[i] = tmp;
 	}
 }
 
 // rr : ra and rb at the same time.
-void	rr(int *stack_a, int *stack_b, int *stack_a_len, int *stack_b_len)
+void	rr(t_stack *a,t_stack *b)
 {
-	ra(stack_a,*stack_a_len),rb(stack_b,*stack_b_len);
+	ra(a),rb(b);
 }
 
-void rra(int *stack,int length)
+void rra(t_stack *a)
 {
 	int	tmp;
 	int	i;
+	int length;
 
+	length = a->length;
 	if (length > 1)
 	{
 		i = 1;
-		tmp = stack[length-- - 1];
+		tmp = a->arr[(length)-- - 1];
 		while (length)
 		{
-			stack[length] = stack[length - 1];
+			a->arr[length] = a->arr[length - 1];
 			i++;
-			length--;
+			(length)--;
 		}
-		stack[0] = tmp;
+		a->arr[0] = tmp;
 	}
 }
-void rrb(int *stack,int length)
+void rrb(t_stack *b)
 {
 	int	tmp;
 	int	i;
+	int length;
 
+	length = b->length;
 	if (length > 1)
 	{
 		i = 1;
-		tmp = stack[length-- - 1];
+		tmp = b->arr[length-- - 1];
 		while (length)
 		{
-			stack[length] = stack[length - 1];
+			b->arr[length] = b->arr[length - 1];
 			i++;
 			length--;
 		}
-		stack[0] = tmp;
+		b->arr[0] = tmp;
 	}
 }

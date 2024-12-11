@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:56:18 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/11 11:28:36 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:04:02 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,79 +24,80 @@
 
 #include "push_swap.h"
 
-void	lst_case_2(int *stack,int length)
+void	lst_case_2(t_stack *stack)
 {
-	if (stack[0] > stack[1])
-		sa(stack,length),ft_printf("sa");
+	if (stack->arr[0] > stack->arr[1])
+		sa(stack),ft_printf("sa");
 }
-void	lst_case_3(int *stack,int length)
+void	lst_case_3(t_stack *stack)
 {
-	if (stack[0] > stack[1] && stack[1] > stack[2]) // 3 2 1
-		sa(stack,length),rra(stack,length),ft_printf("sa ");
-	else if (stack[0] < stack[1] && stack[1] > stack[2] && stack[0] > stack[2]) // 2 3 1
-		rra(stack,length),ft_printf("l");
-	else if (stack[0] > stack[1] && stack[1] < stack[2] && stack[0] > stack[2]) // 3 1 2
-		rra(stack,length),rra(stack,length),ft_printf("m");
-	else if (stack[0] < stack[1] && stack[1] > stack[2] && stack[0] < stack[2]) // 1 3 2
-		rra(stack,length),sa(stack,length),ft_printf("n");
-	else if (stack[0] > stack[1] && stack[1] < stack[2] && stack[0] < stack[2]) // 2 1 3
-		sa(stack,length),ft_printf("r");
+	if (stack->arr[0] > stack->arr[1] && stack->arr[1] > stack->arr[2]) // 3 2 1
+		sa(stack),rra(stack);
+	else if (stack->arr[0] < stack->arr[1] && stack->arr[1] > stack->arr[2] && stack->arr[0] > stack->arr[2]) // 2 3 1
+		rra(stack);
+	else if (stack->arr[0] > stack->arr[1] && stack->arr[1] < stack->arr[2] && stack->arr[0] > stack->arr[2]) // 3 1 2
+		rra(stack),rra(stack);
+	else if (stack->arr[0] < stack->arr[1] && stack->arr[1] > stack->arr[2] && stack->arr[0] < stack->arr[2]) // 1 3 2
+		rra(stack),sa(stack);
+	else if (stack->arr[0] > stack->arr[1] && stack->arr[1] < stack->arr[2] && stack->arr[0] < stack->arr[2]) // 2 1 3
+		sa(stack);
 }
 
-void	lst_case_4_5(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len)
+void	lst_case_4_5(t_stack *a,t_stack *b)
 {
 	int min_index;
 
-	if (*stack_a_len == 4)
+	if (a->length == 4)
 	{
-		min_index = lst_min(stack_a,*stack_a_len) + 1;
-		if (min_index > *stack_a_len / 2 )
+		min_index = lst_min(a->arr,a->length) + 1;
+		if (min_index > a->length / 2 )
 		{
-			while (min_index != *stack_a_len + 1 && min_index++)
-				rra(stack_a,*stack_a_len);
+			while (min_index != a->length + 1 && min_index++)
+				rra(a);
 		}
-		else if (min_index <= *stack_a_len / 2 )
+		else if (min_index <= a->length / 2 )
 		{
 			while (--min_index)
-				ra(stack_a,*stack_a_len);
+				ra(a);
 		}
-		pb(stack_a,stack_b,stack_a_len,stack_b_len);
-		lst_case_3(stack_a,*stack_a_len);
-		pa(stack_a,stack_b,stack_a_len,stack_b_len);
+		pb(a,b);
+		// lst_print(a->arr,a->length);
+		lst_case_3(a);
+		pa(a,b);
 	}
 	else
-		lst_case_5(stack_a,stack_b,stack_a_len,stack_b_len);
+		lst_case_5(a,b);
 }
-void	lst_case_5(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len)
+void	lst_case_5(t_stack *a,t_stack *b)
 {
 	int min_index;
 
-	min_index = lst_min(stack_a,*stack_a_len) + 1;
-	if (min_index > *stack_a_len / 2 )
+	min_index = lst_min(a->arr,a->length) + 1;
+	if (min_index > a->length / 2 )
 	{
-		while (min_index != *stack_a_len + 1 && min_index++)
-			rra(stack_a,*stack_a_len);
+		while (min_index != a->length + 1 && min_index++)
+			rra(a);
 	}
-	else if (min_index <= *stack_a_len / 2 )
+	else if (min_index <= a->length / 2 )
 	{
 		while (--min_index)
-			ra(stack_a,*stack_a_len);
+			ra(a);
 	}
-	pb(stack_a,stack_b,stack_a_len,stack_b_len);
-	lst_case_4_5(stack_a,stack_b,stack_a_len,stack_b_len);
-	pa(stack_a,stack_b,stack_a_len,stack_b_len);
+	pb(a,b);
+	lst_case_4_5(a,b);
+	pa(a,b);
 }
 // devide by shunks method
-void lst_large_case(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len)
+void lst_large_case(t_stack *a,t_stack *b)
 {
 	t_stack sorted_lst;
 
-	sorted_lst.arr = (int *)malloc(*stack_a_len * sizeof(int));
-	lst_cpy(stack_a,sorted_lst.arr,*stack_a_len),lst_sort(sorted_lst.arr,*stack_a_len);
+	sorted_lst.arr = (int *)malloc(a->length * sizeof(int));
+	lst_cpy(a->arr,sorted_lst.arr,a->length),lst_sort(sorted_lst.arr,a->length);
 	t_shunk shunk;
-	while (*stack_a_len)
+	while (a->length)
 	{
-		if (*stack_a_len >= 3)
+		if (a->length >= 3)
 		{
 			shunk.elem1 = sorted_lst.arr[0];
 			shunk.elem2 = sorted_lst.arr[1];
@@ -104,16 +105,16 @@ void lst_large_case(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len)
 			// find_push(stack_a,stack_a_len,)
 			// func that finds this shunks elements and adding it to stack b
 		}
-		else if (*stack_a_len == 2)
+		else if (a->length == 2)
 		{
 			shunk.elem1 = sorted_lst.arr[0];
 			shunk.elem2 = sorted_lst.arr[1];
 			shunk.elem3 = 0;
 			// func that finds this shunks elements and adding it to stack b
 		}
-		else if (*stack_a_len == 1)
+		else if (a->length == 1)
 		{
-			pb(stack_a,stack_a_len,stack_b,stack_b_len);
+			pb(a,b);
 			return ; // it will break anyway
 		}
 	}
