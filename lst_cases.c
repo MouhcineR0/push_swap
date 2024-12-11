@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:56:18 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/10 21:45:17 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:28:36 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,28 @@ void lst_large_case(int *stack_a,int *stack_b,int *stack_a_len,int *stack_b_len)
 
 	sorted_lst.arr = (int *)malloc(*stack_a_len * sizeof(int));
 	lst_cpy(stack_a,sorted_lst.arr,*stack_a_len),lst_sort(sorted_lst.arr,*stack_a_len);
+	t_shunk shunk;
+	while (*stack_a_len)
+	{
+		if (*stack_a_len >= 3)
+		{
+			shunk.elem1 = sorted_lst.arr[0];
+			shunk.elem2 = sorted_lst.arr[1];
+			shunk.elem3 = sorted_lst.arr[2];
+			// find_push(stack_a,stack_a_len,)
+			// func that finds this shunks elements and adding it to stack b
+		}
+		else if (*stack_a_len == 2)
+		{
+			shunk.elem1 = sorted_lst.arr[0];
+			shunk.elem2 = sorted_lst.arr[1];
+			shunk.elem3 = 0;
+			// func that finds this shunks elements and adding it to stack b
+		}
+		else if (*stack_a_len == 1)
+		{
+			pb(stack_a,stack_a_len,stack_b,stack_b_len);
+			return ; // it will break anyway
+		}
+	}
 }
