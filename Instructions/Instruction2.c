@@ -6,13 +6,13 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 09:50:22 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/11 14:24:07 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/12 09:09:28 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ra(t_stack *a)
+void	ra(t_stack *a,int print)
 {
 	int	i;
 	int	tmp;
@@ -27,9 +27,10 @@ void	ra(t_stack *a)
 			i++;
 		}
 		a->arr[i] = tmp;
+		(print) && (ft_printf("ra\n"));
 	}
 }
-void	rb(t_stack *b)
+void	rb(t_stack *b,int print)
 {
 	int	i;
 	int	tmp;
@@ -44,16 +45,18 @@ void	rb(t_stack *b)
 			i++;
 		}
 		b->arr[i] = tmp;
+		(print) && (ft_printf("rb\n"));
 	}
 }
 
 // rr : ra and rb at the same time.
 void	rr(t_stack *a,t_stack *b)
 {
-	ra(a),rb(b);
+	ra(a,0),rb(b,0);
+	ft_printf("rr\n");
 }
 
-void rra(t_stack *a)
+void rra(t_stack *a,int print)
 {
 	int	tmp;
 	int	i;
@@ -71,9 +74,10 @@ void rra(t_stack *a)
 			(length)--;
 		}
 		a->arr[0] = tmp;
+		(print) && ft_printf("rra\n");
 	}
 }
-void rrb(t_stack *b)
+void rrb(t_stack *b,int print)
 {
 	int	tmp;
 	int	i;
@@ -91,5 +95,6 @@ void rrb(t_stack *b)
 			length--;
 		}
 		b->arr[0] = tmp;
+		(print) && ft_printf("rrb\n");
 	}
 }

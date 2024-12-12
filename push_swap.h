@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:08:42 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/11 13:47:42 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/12 08:46:48 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@ typedef struct t_shunk {
 	int current_index; // current index of the original list
 } t_shunk ;
 
-void	sa(t_stack *a);
-void	sb(t_stack *b);
+void	sa(t_stack *a, int print);
+void	sb(t_stack *b, int print);
 void	ss(t_stack *a,t_stack *b);
 void	pa(t_stack *a,t_stack *b); // push in stack a
 void	pb(t_stack *a,t_stack *b); // push in stack b
-void	ra(t_stack *a);
-void	rb(t_stack *b);
+void	ra(t_stack *a, int print);
+void	rb(t_stack *b, int print);
 void	rr(t_stack *a,t_stack *b);
-void	rra(t_stack *a);
-void	rrb(t_stack *b);
+void	rra(t_stack *a, int print);
+void	rrb(t_stack *b, int print);
 void	rrr(t_stack *a,t_stack *b);
 int		is_sorted(int *arr ,int arr_len);
 void	Sort(t_stack *a,t_stack *b);

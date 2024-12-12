@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 09:51:20 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/11 13:43:52 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/12 09:06:45 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 // rrr : rra and rrb at the same time.
 void	rrr(t_stack *a,t_stack *b)
 {
-	rra(a),rrb(b);
+	rra(a,0),rrb(b,0);
+	ft_printf("rrr\n");
 }
