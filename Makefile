@@ -1,3 +1,7 @@
+COLOUR_GREEN=\033[0;32m
+COLOUR_END=\033[0m
+COLOUR_YELLOW = \033[33m
+
 SRC = libft/ft_isalpha.c libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c libft/ft_isalnum.c libft/ft_isascii.c libft/ft_isdigit.c \
 	libft/ft_isprint.c libft/ft_itoa.c libft/ft_memchr.c libft/ft_memcmp.c libft/ft_memcpy.c libft/ft_memmove.c libft/ft_memset.c libft/ft_putchar_fd.c \
 	libft/ft_putendl_fd.c libft/ft_putnbr_fd.c libft/ft_putstr_fd.c libft/ft_strchr.c libft/ft_strdup.c libft/ft_striteri.c libft/ft_strjoin.c \
@@ -7,7 +11,7 @@ SRC = libft/ft_isalpha.c libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c libf
 	main.c Instructions/Instruction1.c Instructions/Instruction2.c Instructions/Instruction3.c isSorted.c sort.c lst_cases.c libft/lst_sort.c
 
 
-# FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 CC = cc
 
@@ -23,11 +27,15 @@ OBJS = $(SRC:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+$(NAME) : Compiling $(OBJS)
+	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+	@echo "$(COLOUR_GREEN)		Linking done !$(COLOUR_END)"
 
-%.o : %.c $(LIBFT) $(PRINTFLIB) 
-	$(CC) $(FLAGS) -c $< -o $@
+%.o : %.c $(LIBFT) $(PRINTFLIB)
+	@$(CC) $(FLAGS) -c $< -o $@
+
+Compiling :
+	@echo "$(COLOUR_YELLOW)Linking ...$(COLOUR_END)"
 
 clean :
 	rm -f $(OBJS)

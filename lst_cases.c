@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:56:18 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/13 19:49:22 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/13 20:36:15 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,11 @@ void	lst_case_4_5(t_stack *a,t_stack *b)
 {
 	int min_index;
 
-	if (a->length == 4)
+	if (a->length == 3)
+		lst_case_3(a);
+	else if (a->length == 2)
+		lst_case_2(a);
+	else if (a->length == 4)
 	{
 		min_index = lst_min(a->arr,a->length) + 1;
 		if (min_index > a->length / 2 )
@@ -140,36 +144,6 @@ void	sort_shunk(t_stack *a,t_stack *b)
 			rrb(b,1);
 	}
 }
-
-// find 3 min numbers and push them
-// void	find_push(t_stack *a,t_stack *b,t_shunk *shunk)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	while (i < a->length)
-// 	{
-// 		if ((a->arr[i] == shunk->elem1 && shunk->length >= 1) || (a->arr[i] == shunk->elem2 && shunk->length >= 2) 
-// 		|| (a->arr[i] == shunk->elem3 && shunk->length >= 3) || (a->arr[i] == shunk->elem4 && shunk->length >= 4) 
-// 		|| (a->arr[i] == shunk->elem5 && shunk->length >= 5))
-// 		{
-// 			if (i < a->length / 2)
-// 			{
-// 				while (i--)
-// 					ra(a,1);
-// 				i = -1;
-// 			}
-// 			else if (i >= a->length / 2)
-// 			{
-// 				while (a->length != i++)
-// 					rra(a,1);
-// 				i = -1;
-// 			}
-// 			pb(a,b);
-// 		}
-// 		i++;
-// 	}
-// }
 // i will do chunks method with 10 elements
 // search for elements of the first shank lte7t w lfog w nchuf l9riba w nrotati 3la wdha w npushiha
 // wla ndir be3da ghir chanks b 5 elements w nchuf wach 9lal les instructions
@@ -182,23 +156,23 @@ int	shank_element(t_stack *shank,t_stack *a)
 
 	left = 0;
 	right = a->length - 1;
-	lst_print(shank->arr,shank->length);
-	lst_print(a->arr,a->length);
+	// lst_print(shank->arr,shank->length);
+	// lst_print(a->arr,a->length);
 	while (left <= right)
 	{
 		i = 0;
-		while (i < 5)
+		while (i < 5) // this should change depend on chank size
 		{
 			if (shank->arr[i] == a->arr[left])
 			{
-				ft_printf("[[[%d %d]]] -> ",left,a->arr[left]);
-				ft_printf("[[[%d %d]]]",i,shank->arr[i]);
+				// ft_printf("[[[%d %d]]] -> ",left,a->arr[left]);
+				// ft_printf("[[[%d %d]]]",i,shank->arr[i]);
 				return (left);
 			}
 			else if (shank->arr[i] == a->arr[right])
 			{
-				ft_printf("[[[%d %d]]] -> ",left,a->arr[left]);
-				ft_printf("[[[%d %d]]]",i,shank->arr[i]);
+				// ft_printf("[[[%d %d]]] -> ",left,a->arr[left]);
+				// ft_printf("[[[%d %d]]]",i,shank->arr[i]);
 				return (right);
 			}
 			i++;
@@ -213,14 +187,13 @@ void lst_large_case(t_stack *a,t_stack *b)
 {
 	t_stack sorted_arr;
 	int tmp;
-	int index;
 
 	tmp = -1;
 	sorted_arr.arr = (int *) malloc(a->length * sizeof(int));
 	lst_cpy(a->arr,sorted_arr.arr,a->length);
 	sorted_arr.length = a->length;
 	lst_sort(sorted_arr.arr,sorted_arr.length);
-	while (a->length >= 5)
+	while (a->length >= 5) // this should change depend on chank size
 	{
 		tmp = shank_element(&sorted_arr,a);
 		if (tmp != -1)
@@ -241,92 +214,16 @@ void lst_large_case(t_stack *a,t_stack *b)
 		}
 		else
 		{
-			// ft_printf("\n rotated \n");
-			rb(&sorted_arr,0);
-			rb(&sorted_arr,0);
-			rb(&sorted_arr,0);
-			rb(&sorted_arr,0);
-			rb(&sorted_arr,0);
-			sorted_arr.length -= 5;
+			int k = 5; // this should change depend on chank size
+			while (k--)
+				rb(&sorted_arr,0);
+			sorted_arr.length -= 5; // this should change depend on chank size
 		}
 		// lst_print(b->arr,b->length);
 		// ft_printf("\n");
 	}
+	if (a->length)
+		lst_case_4_5(a,b);
+	while (a->length)
+		pb(a,b);
 }
-// void lst_large_case(t_stack *a,t_stack *b)
-// {
-// 	t_stack sorted_lst;
-
-// 	sorted_lst.arr = (int *)malloc(a->length * sizeof(int));
-// 	if (!sorted_lst.arr)
-// 		return ;
-// 	sorted_lst.length = a->length;
-// 	lst_cpy(a->arr,sorted_lst.arr,a->length);
-// 	lst_sort(sorted_lst.arr,a->length);
-// 	// lst_print(sorted_lst.arr,sorted_lst.length);
-// 	t_shunk shunk;
-
-// 	while (a->length)
-// 	{
-// 		if (a->length >= 5)
-// 		{
-// 			shunk.elem1 = sorted_lst.arr[0];
-// 			shunk.elem2 = sorted_lst.arr[1];
-// 			shunk.elem3 = sorted_lst.arr[2];
-// 			shunk.elem4 = sorted_lst.arr[3];
-// 			shunk.elem5 = sorted_lst.arr[4];
-// 			shunk.length = 5;
-// 			find_push(a,b,&shunk);
-// 			ra(&sorted_lst,1);
-// 			ra(&sorted_lst,1);
-// 			ra(&sorted_lst,1);
-// 			ra(&sorted_lst,1);
-// 			ra(&sorted_lst,1);
-// 			sorted_lst.length -= 5;
-// 		}
-// 		if (a->length >= 4)
-// 		{
-// 			shunk.elem1 = sorted_lst.arr[0];
-// 			shunk.elem2 = sorted_lst.arr[1];
-// 			shunk.elem3 = sorted_lst.arr[2];
-// 			shunk.elem4 = sorted_lst.arr[3];
-// 			shunk.length = 4;
-// 			find_push(a,b,&shunk);
-// 			ra(&sorted_lst,1);
-// 			ra(&sorted_lst,1);
-// 			ra(&sorted_lst,1);
-// 			ra(&sorted_lst,1);
-// 			sorted_lst.length -= 4;
-// 		}
-// 		if (a->length >= 3)
-// 		{
-// 			shunk.elem1 = sorted_lst.arr[0];
-// 			shunk.elem2 = sorted_lst.arr[1];
-// 			shunk.elem3 = sorted_lst.arr[2];
-// 			shunk.length = 3;
-// 			find_push(a,b,&shunk);
-// 			ra(&sorted_lst,1);
-// 			ra(&sorted_lst,1);
-// 			ra(&sorted_lst,1);
-// 			sorted_lst.length -= 3;
-// 		}
-// 		if (a->length == 2)
-// 		{
-// 			shunk.elem1 = sorted_lst.arr[0];
-// 			shunk.elem2 = sorted_lst.arr[1];
-// 			shunk.length = 2;
-// 			shunk.elem3 = 0;
-// 			find_push(a,b,&shunk);
-// 			ra(&sorted_lst,1);
-// 			ra(&sorted_lst,1);
-// 			sorted_lst.length -= 2;
-// 		}
-// 		if (a->length == 1)
-// 		{
-// 			pb(a,b);
-// 			sort_shunk(a,b);
-// 			return ;
-// 		}
-// 	}
-// 	sort_shunk(a,b);
-// }
