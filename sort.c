@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 11:57:59 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/11 19:37:51 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/12 10:43:08 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int lst_max(int *lst,int length)
 	if (length)
 	{
 		i = 0;
+		max = 0;
 		while (i < length)
 		{
 			if (lst[i] > lst[max])

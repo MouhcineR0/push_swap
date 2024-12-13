@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:08:42 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/12 08:46:48 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/13 13:46:31 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ typedef struct t_stack {
 	int length;
 } t_stack ;
 
-typedef struct t_shunk {
-	int elem1;
-	int elem2;
-	int elem3;
+typedef struct t_shank {
+	int *arr;
+	int start;
+	int end;
 	int length; // length of shrunk
-	int current_index; // current index of the original list
-} t_shunk ;
+} t_shank ;
 
 void	sa(t_stack *a, int print);
 void	sb(t_stack *b, int print);
@@ -50,5 +49,6 @@ void	lst_case_3(t_stack *stack);
 void	lst_case_4_5(t_stack *a,t_stack *b);
 void	lst_case_5(t_stack *a,t_stack *b);
 void	lst_large_case(t_stack *a,t_stack *b);
+int lst_max(int *lst,int length);
 
 #endif
