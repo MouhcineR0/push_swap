@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:56:18 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/13 20:36:15 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/14 13:17:43 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ void	sort_shunk(t_stack *a,t_stack *b)
 // search for elements of the first shank lte7t w lfog w nchuf l9riba w nrotati 3la wdha w npushiha
 // wla ndir be3da ghir chanks b 5 elements w nchuf wach 9lal les instructions
 
-int	shank_element(t_stack *shank,t_stack *a)
+int	shank_element(t_stack *shank,t_stack *a,int shank_length)
 {
 	int left;
 	int right;
@@ -161,7 +161,7 @@ int	shank_element(t_stack *shank,t_stack *a)
 	while (left <= right)
 	{
 		i = 0;
-		while (i < 5) // this should change depend on chank size
+		while (i < shank_length) // this should change depend on chank size
 		{
 			if (shank->arr[i] == a->arr[left])
 			{
@@ -182,8 +182,36 @@ int	shank_element(t_stack *shank,t_stack *a)
 	}
 	return (-1);
 }
+
+void push_swap(t_stack *a,t_stack *b)
+{
+	int max_index;
+
+	while (b->length)
+	{
+		max_index = lst_max(b->arr,b->length);
+		if (max_index < b->length / 2)
+		{
+			while (max_index--)
+			{
+				rb(b,1);
+			}
+			pa(a,b);
+		}
+		else if (b->length / 2 <= max_index)
+		{
+			while (b->length != max_index++)
+			{
+				rrb(b,1);
+			}
+			pa(a,b);
+		}
+	}
+}
+
+
 // nbdaw n9su 5 b 5 ila b9at lina chi 7aja 9el mn 5 npushiwha kamla
-void lst_large_case(t_stack *a,t_stack *b)
+void lst_large_case(t_stack *a,t_stack *b, int shank_length)
 {
 	t_stack sorted_arr;
 	int tmp;
@@ -193,9 +221,10 @@ void lst_large_case(t_stack *a,t_stack *b)
 	lst_cpy(a->arr,sorted_arr.arr,a->length);
 	sorted_arr.length = a->length;
 	lst_sort(sorted_arr.arr,sorted_arr.length);
-	while (a->length >= 5) // this should change depend on chank size
+	while (a->length >= shank_length) // this should change depend on chank size
 	{
-		tmp = shank_element(&sorted_arr,a);
+		// ft_printf("h");
+		tmp = shank_element(&sorted_arr,a,shank_length);
 		if (tmp != -1)
 		{
 			if (tmp < a->length / 2)
@@ -204,7 +233,7 @@ void lst_large_case(t_stack *a,t_stack *b)
 					ra(a,1);
 				pb(a,b);
 			}
-			if (a->length / 2 <= tmp)
+			else if (a->length / 2 <= tmp)
 			{
 				while (a->length != tmp++)
 					rra(a,1);
@@ -214,16 +243,19 @@ void lst_large_case(t_stack *a,t_stack *b)
 		}
 		else
 		{
-			int k = 5; // this should change depend on chank size
+			// lst_print(b->arr,b->length);
+			int k = shank_length; // this should change depend on chank size
+			// ft_printf("\n shank_length = %d \n",shank_length);
 			while (k--)
 				rb(&sorted_arr,0);
-			sorted_arr.length -= 5; // this should change depend on chank size
+			sorted_arr.length -= shank_length; // this should change depend on chank size
+			// lst_print(sorted_arr.arr,sorted_arr.length);
 		}
-		// lst_print(b->arr,b->length);
-		// ft_printf("\n");
 	}
-	if (a->length)
-		lst_case_4_5(a,b);
+	// if (a->length <= 5) // sort remaining in stack a
+	// 	lst_case_4_5(a,b);
+	// else
 	while (a->length)
 		pb(a,b);
+	push_swap(a,b);
 }

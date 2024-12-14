@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:08:42 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/13 13:46:31 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/14 09:12:24 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	lst_case_2(t_stack *stack);
 void	lst_case_3(t_stack *stack);
 void	lst_case_4_5(t_stack *a,t_stack *b);
 void	lst_case_5(t_stack *a,t_stack *b);
-void	lst_large_case(t_stack *a,t_stack *b);
+void	lst_large_case(t_stack *a,t_stack *b, int shank_length);
 int lst_max(int *lst,int length);
 
 #endif

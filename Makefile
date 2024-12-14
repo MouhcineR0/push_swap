@@ -1,6 +1,6 @@
 COLOUR_GREEN=\033[0;32m
 COLOUR_END=\033[0m
-COLOUR_YELLOW = \033[33m
+COLOUR_GRAY = \033[30m
 
 SRC = libft/ft_isalpha.c libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c libft/ft_isalnum.c libft/ft_isascii.c libft/ft_isdigit.c \
 	libft/ft_isprint.c libft/ft_itoa.c libft/ft_memchr.c libft/ft_memcmp.c libft/ft_memcpy.c libft/ft_memmove.c libft/ft_memset.c libft/ft_putchar_fd.c \
@@ -35,7 +35,7 @@ $(NAME) : Compiling $(OBJS)
 	@$(CC) $(FLAGS) -c $< -o $@
 
 Compiling :
-	@echo "$(COLOUR_YELLOW)Linking ...$(COLOUR_END)"
+	@echo "$(COLOUR_GRAY)Linking ...$(COLOUR_END)"
 
 clean :
 	rm -f $(OBJS)
