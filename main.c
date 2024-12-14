@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 20:17:02 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/14 13:27:58 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/14 14:49:32 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ int main(int argc, char const *argv[])
 		// lst_print(a.arr,a.length);
 		// lst_print(b.arr,b.length);
 		Sort(&a,&b);
-		ft_printf("ss");
 		// lst_print(a.arr,a.length);
 		// lst_print(b.arr,b.length);
 		free(a.arr);

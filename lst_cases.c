@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:56:18 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/14 13:17:43 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/14 16:14:36 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,30 +183,110 @@ int	shank_element(t_stack *shank,t_stack *a,int shank_length)
 	return (-1);
 }
 
-void push_swap(t_stack *a,t_stack *b)
+void push_a(t_stack *a,t_stack *b,int index)
 {
-	int max_index;
-
-	while (b->length)
-	{
-		max_index = lst_max(b->arr,b->length);
-		if (max_index < b->length / 2)
+	if (index < b->length / 2)
 		{
-			while (max_index--)
+			while (index--)
 			{
 				rb(b,1);
 			}
 			pa(a,b);
 		}
-		else if (b->length / 2 <= max_index)
+		else if (b->length / 2 <= index)
 		{
-			while (b->length != max_index++)
+			while (b->length != index++)
 			{
 				rrb(b,1);
 			}
 			pa(a,b);
 		}
+}
+
+void push_swap(t_stack *a,t_stack *b)
+{
+	int max_index;
+	int max_minus_index;
+	int should_swap;
+
+	should_swap = 0;
+	// sorted array stack :
+	t_stack sorted_arr;
+	sorted_arr.arr = (int *) malloc(b->length * sizeof(int));
+	lst_cpy(b->arr,sorted_arr.arr,b->length);
+	sorted_arr.length = b->length;
+	lst_sort(sorted_arr.arr,sorted_arr.length);
+	
+	while (b->length)
+	{
+		if (b->length >= 2)
+		{
+			max_minus_index = lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[b->length - 2]);
+			max_index = lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[b->length - 1]);
+		}
+		else if (b->length == 1)
+		{
+			max_index = lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[b->length - 1]);
+			max_minus_index = -1;
+		}
+		if (max_index > b->length / 2 && max_minus_index > b->length / 2 && max_minus_index != -1)
+		{
+			if (max_index > max_minus_index)
+			{
+				push_a(a,b,max_index);
+				push_a(a,b,max_minus_index);
+			}
+			else if (max_index < max_minus_index)
+			{
+				push_a(a,b,max_minus_index);	
+				push_a(a,b,max_index);
+				sa(a,1);
+			}
+		}
+		else if (max_index < b->length / 2 && max_minus_index < b->length / 2 && max_minus_index != -1)
+		{
+			if (max_index < max_minus_index)
+			{
+				push_a(a,b,max_index);
+				push_a(a,b,max_minus_index);
+			}
+			else if (max_index > max_minus_index)
+			{
+				push_a(a,b,max_minus_index);	
+				push_a(a,b,max_index);
+				sa(a,1);
+			}
+		}
+		else if (max_index < b->length / 2 && max_minus_index > b->length / 2 && max_minus_index != -1)
+		{
+			if (max_index < b->length - max_minus_index)
+			{
+				push_a(a,b,max_index);
+				push_a(a,b,max_minus_index);
+			}
+			else {
+				push_a(a,b,max_minus_index);
+				push_a(a,b,max_index);
+				sa(a,1);
+			}
+		}
+		else if (max_index > b->length / 2 && max_minus_index < b->length / 2 && max_minus_index != -1)
+		{
+			if (max_index < b->length - max_minus_index)
+			{
+				push_a(a,b,max_index);
+				push_a(a,b,max_minus_index);
+			}
+			else {
+				push_a(a,b,max_minus_index);
+				push_a(a,b,max_index);
+				sa(a,1);
+			}
+		}
+		else
+			push_a(a,b,max_index);
 	}
+	// ft_printf("[[[[%d]]]]",i);
 }
 
 
@@ -217,10 +297,12 @@ void lst_large_case(t_stack *a,t_stack *b, int shank_length)
 	int tmp;
 
 	tmp = -1;
+	int i = 0;
 	sorted_arr.arr = (int *) malloc(a->length * sizeof(int));
 	lst_cpy(a->arr,sorted_arr.arr,a->length);
 	sorted_arr.length = a->length;
 	lst_sort(sorted_arr.arr,sorted_arr.length);
+
 	while (a->length >= shank_length) // this should change depend on chank size
 	{
 		// ft_printf("h");
@@ -230,14 +312,14 @@ void lst_large_case(t_stack *a,t_stack *b, int shank_length)
 			if (tmp < a->length / 2)
 			{
 				while (tmp--)
-					ra(a,1);
-				pb(a,b);
+					ra(a,1);i++;
+				pb(a,b);i++;
 			}
 			else if (a->length / 2 <= tmp)
 			{
 				while (a->length != tmp++)
-					rra(a,1);
-				pb(a,b);
+					rra(a,1);i++;
+				pb(a,b);i++;
 			}
 			tmp = -1;
 		}

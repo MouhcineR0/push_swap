@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:29:13 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/10 20:29:13 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/14 14:10:09 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void		ft_putnbr_fd(int n, int fd);
 void		lst_push(int *arr, int nb,int length);
 void		lst_sort(int *lst,int length);
 void		lst_cpy(int *original_lst,int *new_lst,int length);
+int			lst_index_of(int *lst,int length,int nb);
 
 
 #endif
