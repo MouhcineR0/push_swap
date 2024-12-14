@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:56:18 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/14 16:14:36 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/14 23:50:51 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,8 +156,13 @@ int	shank_element(t_stack *shank,t_stack *a,int shank_length)
 
 	left = 0;
 	right = a->length - 1;
-	// lst_print(shank->arr,shank->length);
-	// lst_print(a->arr,a->length);
+	// i = 0;
+	// while (i < shank_length)
+	// {
+	// 	if (shank->arr[i] == a->arr[0])
+	// 		return (0);
+	// 	i++;
+	// }
 	while (left <= right)
 	{
 		i = 0;
@@ -186,23 +191,40 @@ int	shank_element(t_stack *shank,t_stack *a,int shank_length)
 void push_a(t_stack *a,t_stack *b,int index)
 {
 	if (index < b->length / 2)
+	{
+		while (index > 0 && index--)
 		{
-			while (index--)
-			{
-				rb(b,1);
-			}
-			pa(a,b);
+			rb(b,1);
 		}
-		else if (b->length / 2 <= index)
+		pa(a,b);
+	}
+	else if (b->length / 2 <= index)
+	{
+		while (b->length != index++)
 		{
-			while (b->length != index++)
-			{
-				rrb(b,1);
-			}
-			pa(a,b);
+			rrb(b,1);
 		}
+		pa(a,b);
+	}
 }
 
+// fach kansiftu l index lwl itpusha kaytbdel lina les index dyal table cuz kaytrotata
+// probleme kan f b->length bach kan endixiw array sorted.arr
+// error indexing just test and t3jeb mzyan 
+// [][ 860647 , 460979 , 524945 , 917686 , 801533 , 952914 , 794332 , 888235 , 677616 , 885849 , 724838 , 935738 , 588446 , 585324 , 501095 , 638345 , 618712 , 471559 , 652660 , 545956 , 435766 , 119317 , 417006 , 165764 , 428897 , 123483 , 123364 , 352647 , 187484 , 329416 , 327618 , 222406 , 108615 , 375930 , 185662 , 306892 , 422896 , 136026 , 335596 , 307182 , -121722 , -154891 , 69307 , -233627 , 64656 , -225463 , -321450 , -242751 , -53924 , 41643 , -199215 , -70263 , 97921 , -74985 , -37324 , -362522 , -124828 , -3485 , -332423 , -72543 , -548166 , -396556 , -497873 , -638407 , -371382 , -413491 , -685611 , -429490 , -627928 , -583519 , -574015 , -365563 , -632623 , -368198 , -459277 , -551933 , -690168 , -453473 , -647226 , -678353 , -772152 , -915536 , -834427 , -955697 , -967281 , -949764 , -901060 , -699705 , -732410 , -697151 , -748085 , -765779 , -724651 , -691147 , -882041 , -855159 , -914728 , -990270 , -851913 , -701627 ]
+// [[[[5]]]]
+// [[[[11]]]]
+// rb
+// rb
+// rb
+// rb
+// rb
+// pa
+// pa
+// sa
+// [ 952914 , 794332 ][ 888235 , 677616 , 885849 , 724838 , 935738 , 588446 , 585324 , 501095 , 638345 , 618712 , 471559 , 652660 , 545956 , 435766 , 119317 , 417006 , 165764 , 428897 , 123483 , 123364 , 352647 , 187484 , 329416 , 327618 , 222406 , 108615 , 375930 , 185662 , 306892 , 422896 , 136026 , 335596 , 307182 , -121722 , -154891 , 69307 , -233627 , 64656 , -225463 , -321450 , -242751 , -53924 , 41643 , -199215 , -70263 , 97921 , -74985 , -37324 , -362522 , -124828 , -3485 , -332423 , -72543 , -548166 , -396556 , -497873 , -638407 , -371382 , -413491 , -685611 , -429490 , -627928 , -583519 , -574015 , -365563 , -632623 , -368198 , -459277 , -551933 , -690168 , -453473 , -647226 , -678353 , -772152 , -915536 , -834427 , -955697 , -967281 , -949764 , -901060 , -699705 , -732410 , -697151 , -748085 , -765779 , -724651 , -691147 , -882041 , -855159 , -914728 , -990270 , -851913 , -701627 , 860647 , 460979 , 524945 , 917686 , 801533 ]
+// [[[[96]]]]
+// [[[[0]]]]
 void push_swap(t_stack *a,t_stack *b)
 {
 	int max_index;
@@ -216,78 +238,117 @@ void push_swap(t_stack *a,t_stack *b)
 	lst_cpy(b->arr,sorted_arr.arr,b->length);
 	sorted_arr.length = b->length;
 	lst_sort(sorted_arr.arr,sorted_arr.length);
+	// int i = b->length -;
 	
 	while (b->length)
 	{
 		if (b->length >= 2)
 		{
-			max_minus_index = lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[b->length - 2]);
-			max_index = lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[b->length - 1]);
+			max_minus_index = lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]);
+			// max_minus_index = -1;
+			max_index = lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 2]);
+			lst_print(a->arr,a->length);
+			lst_print(b->arr,b->length);
+			ft_printf("\n[[[[%d]]]]\n",max_minus_index);
+			ft_printf("[[[[%d]]]]\n",max_index);
+			// lst_print(b->arr,b->length);
+			// return ;
 		}
 		else if (b->length == 1)
 		{
-			max_index = lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[b->length - 1]);
-			max_minus_index = -1;
+			// max_index = lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]);
+			// max_minus_index = -1;
+			return ;
 		}
-		if (max_index > b->length / 2 && max_minus_index > b->length / 2 && max_minus_index != -1)
+		if (max_index >= b->length / 2 && max_minus_index >= b->length / 2 && max_minus_index != -1)
 		{
 			if (max_index > max_minus_index)
 			{
 				push_a(a,b,max_index);
-				push_a(a,b,max_minus_index);
+				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 2]) + 1);
 			}
-			else if (max_index < max_minus_index)
+			else if (max_index <= max_minus_index)
 			{
 				push_a(a,b,max_minus_index);	
-				push_a(a,b,max_index);
+				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]) + 1);
 				sa(a,1);
 			}
 		}
-		else if (max_index < b->length / 2 && max_minus_index < b->length / 2 && max_minus_index != -1)
+		else if (max_index <= b->length / 2 && max_minus_index <= b->length / 2 && max_minus_index != -1)
 		{
 			if (max_index < max_minus_index)
 			{
 				push_a(a,b,max_index);
-				push_a(a,b,max_minus_index);
+				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 2]) + 1);
 			}
-			else if (max_index > max_minus_index)
+			else if (max_index >= max_minus_index)
 			{
 				push_a(a,b,max_minus_index);	
-				push_a(a,b,max_index);
+				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]) + 1);
 				sa(a,1);
 			}
 		}
-		else if (max_index < b->length / 2 && max_minus_index > b->length / 2 && max_minus_index != -1)
+		else if (max_index <= b->length / 2 && max_minus_index >= b->length / 2 && max_minus_index != -1)
 		{
 			if (max_index < b->length - max_minus_index)
 			{
 				push_a(a,b,max_index);
-				push_a(a,b,max_minus_index);
+				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 2]) + 1);
 			}
 			else {
 				push_a(a,b,max_minus_index);
-				push_a(a,b,max_index);
+				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]) + 1);
 				sa(a,1);
 			}
 		}
-		else if (max_index > b->length / 2 && max_minus_index < b->length / 2 && max_minus_index != -1)
+		else if (max_index >= b->length / 2 && max_minus_index <= b->length / 2 && max_minus_index != -1) // warning
 		{
 			if (max_index < b->length - max_minus_index)
 			{
 				push_a(a,b,max_index);
-				push_a(a,b,max_minus_index);
+				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 2]) + 1);
 			}
 			else {
 				push_a(a,b,max_minus_index);
-				push_a(a,b,max_index);
+				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]) + 1);
 				sa(a,1);
 			}
 		}
 		else
 			push_a(a,b,max_index);
+		if (max_minus_index != -1)
+			sorted_arr.length -= 2;
+		else
+			sorted_arr.length--;
 	}
 	// ft_printf("[[[[%d]]]]",i);
 }
+// void push_swap(t_stack *a,t_stack *b)
+// {
+// 	int max_index;
+// 	int i = 0;
+// 	while (b->length)
+// 	{
+// 		max_index = lst_max(b->arr,b->length);
+// 		if (max_index < b->length / 2)
+// 		{
+// 			while (max_index--)
+// 			{
+// 				rb(b,1);i++;
+// 			}
+// 			pa(a,b);i++;
+// 		}
+// 		else if (b->length / 2 <= max_index)
+// 		{
+// 			while (b->length != max_index++)
+// 			{
+// 				rrb(b,1);i++;
+// 			}
+// 			pa(a,b);i++;
+// 		}
+// 	}
+// 	ft_printf("((((%d))))",i);
+// }
 
 
 // nbdaw n9su 5 b 5 ila b9at lina chi 7aja 9el mn 5 npushiwha kamla
@@ -325,13 +386,10 @@ void lst_large_case(t_stack *a,t_stack *b, int shank_length)
 		}
 		else
 		{
-			// lst_print(b->arr,b->length);
 			int k = shank_length; // this should change depend on chank size
-			// ft_printf("\n shank_length = %d \n",shank_length);
 			while (k--)
 				rb(&sorted_arr,0);
 			sorted_arr.length -= shank_length; // this should change depend on chank size
-			// lst_print(sorted_arr.arr,sorted_arr.length);
 		}
 	}
 	// if (a->length <= 5) // sort remaining in stack a
@@ -339,5 +397,6 @@ void lst_large_case(t_stack *a,t_stack *b, int shank_length)
 	// else
 	while (a->length)
 		pb(a,b);
+	// ft_printf("[[[%d]]]",i);
 	push_swap(a,b);
 }
