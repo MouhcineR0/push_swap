@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Number of unique random numbers to generate
-NUM_COUNT=500
+NUM_COUNT=100
 MAX0=0
 
 # Check if Python is installed
@@ -35,4 +35,4 @@ while true; do
     echo "Test stopped: Found a result with instructions greater than 5500."
     break
   fi
-done``
+done

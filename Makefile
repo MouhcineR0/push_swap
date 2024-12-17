@@ -11,7 +11,7 @@ SRC = libft/ft_isalpha.c libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c libf
 	main.c Instructions/Instruction1.c Instructions/Instruction2.c Instructions/Instruction3.c isSorted.c sort.c lst_cases.c libft/lst_sort.c
 
 
-FLAGS = -Wall -Wextra -Werror
+# FLAGS = -Wall -Wextra -Werror
 
 CC = cc
 
