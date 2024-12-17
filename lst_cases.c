@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:56:18 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/14 23:50:51 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/17 04:44:29 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,131 +225,200 @@ void push_a(t_stack *a,t_stack *b,int index)
 // [ 952914 , 794332 ][ 888235 , 677616 , 885849 , 724838 , 935738 , 588446 , 585324 , 501095 , 638345 , 618712 , 471559 , 652660 , 545956 , 435766 , 119317 , 417006 , 165764 , 428897 , 123483 , 123364 , 352647 , 187484 , 329416 , 327618 , 222406 , 108615 , 375930 , 185662 , 306892 , 422896 , 136026 , 335596 , 307182 , -121722 , -154891 , 69307 , -233627 , 64656 , -225463 , -321450 , -242751 , -53924 , 41643 , -199215 , -70263 , 97921 , -74985 , -37324 , -362522 , -124828 , -3485 , -332423 , -72543 , -548166 , -396556 , -497873 , -638407 , -371382 , -413491 , -685611 , -429490 , -627928 , -583519 , -574015 , -365563 , -632623 , -368198 , -459277 , -551933 , -690168 , -453473 , -647226 , -678353 , -772152 , -915536 , -834427 , -955697 , -967281 , -949764 , -901060 , -699705 , -732410 , -697151 , -748085 , -765779 , -724651 , -691147 , -882041 , -855159 , -914728 , -990270 , -851913 , -701627 , 860647 , 460979 , 524945 , 917686 , 801533 ]
 // [[[[96]]]]
 // [[[[0]]]]
-void push_swap(t_stack *a,t_stack *b)
-{
-	int max_index;
-	int max_minus_index;
-	int should_swap;
-
-	should_swap = 0;
-	// sorted array stack :
-	t_stack sorted_arr;
-	sorted_arr.arr = (int *) malloc(b->length * sizeof(int));
-	lst_cpy(b->arr,sorted_arr.arr,b->length);
-	sorted_arr.length = b->length;
-	lst_sort(sorted_arr.arr,sorted_arr.length);
-	// int i = b->length -;
-	
-	while (b->length)
-	{
-		if (b->length >= 2)
-		{
-			max_minus_index = lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]);
-			// max_minus_index = -1;
-			max_index = lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 2]);
-			lst_print(a->arr,a->length);
-			lst_print(b->arr,b->length);
-			ft_printf("\n[[[[%d]]]]\n",max_minus_index);
-			ft_printf("[[[[%d]]]]\n",max_index);
-			// lst_print(b->arr,b->length);
-			// return ;
-		}
-		else if (b->length == 1)
-		{
-			// max_index = lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]);
-			// max_minus_index = -1;
-			return ;
-		}
-		if (max_index >= b->length / 2 && max_minus_index >= b->length / 2 && max_minus_index != -1)
-		{
-			if (max_index > max_minus_index)
-			{
-				push_a(a,b,max_index);
-				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 2]) + 1);
-			}
-			else if (max_index <= max_minus_index)
-			{
-				push_a(a,b,max_minus_index);	
-				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]) + 1);
-				sa(a,1);
-			}
-		}
-		else if (max_index <= b->length / 2 && max_minus_index <= b->length / 2 && max_minus_index != -1)
-		{
-			if (max_index < max_minus_index)
-			{
-				push_a(a,b,max_index);
-				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 2]) + 1);
-			}
-			else if (max_index >= max_minus_index)
-			{
-				push_a(a,b,max_minus_index);	
-				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]) + 1);
-				sa(a,1);
-			}
-		}
-		else if (max_index <= b->length / 2 && max_minus_index >= b->length / 2 && max_minus_index != -1)
-		{
-			if (max_index < b->length - max_minus_index)
-			{
-				push_a(a,b,max_index);
-				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 2]) + 1);
-			}
-			else {
-				push_a(a,b,max_minus_index);
-				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]) + 1);
-				sa(a,1);
-			}
-		}
-		else if (max_index >= b->length / 2 && max_minus_index <= b->length / 2 && max_minus_index != -1) // warning
-		{
-			if (max_index < b->length - max_minus_index)
-			{
-				push_a(a,b,max_index);
-				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 2]) + 1);
-			}
-			else {
-				push_a(a,b,max_minus_index);
-				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]) + 1);
-				sa(a,1);
-			}
-		}
-		else
-			push_a(a,b,max_index);
-		if (max_minus_index != -1)
-			sorted_arr.length -= 2;
-		else
-			sorted_arr.length--;
-	}
-	// ft_printf("[[[[%d]]]]",i);
-}
 // void push_swap(t_stack *a,t_stack *b)
 // {
 // 	int max_index;
-// 	int i = 0;
+// 	int max_minus_index;
+// 	int should_swap;
+
+// 	should_swap = 0;
+// 	// sorted array stack :
+// 	t_stack sorted_arr;
+// 	sorted_arr.arr = (int *) malloc(b->length * sizeof(int));
+// 	lst_cpy(b->arr,sorted_arr.arr,b->length);
+// 	sorted_arr.length = b->length;
+// 	lst_sort(sorted_arr.arr,sorted_arr.length);
+// 	// int i = b->length -;
+	
 // 	while (b->length)
 // 	{
-// 		max_index = lst_max(b->arr,b->length);
-// 		if (max_index < b->length / 2)
+// 		if (b->length >= 2)
 // 		{
-// 			while (max_index--)
-// 			{
-// 				rb(b,1);i++;
-// 			}
-// 			pa(a,b);i++;
+// 			max_minus_index = lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]);
+// 			// max_minus_index = -1;
+// 			max_index = lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 2]);
+// 			// lst_print(a->arr,a->length);
+// 			// lst_print(b->arr,b->length);
+// 			// ft_printf("\n[[[[%d]]]]\n",max_minus_index);
+// 			// ft_printf("[[[[%d]]]]\n",max_index);
+// 			// lst_print(b->arr,b->length);
+// 			// return ;
 // 		}
-// 		else if (b->length / 2 <= max_index)
+// 		else if (b->length == 1)
 // 		{
-// 			while (b->length != max_index++)
-// 			{
-// 				rrb(b,1);i++;
-// 			}
-// 			pa(a,b);i++;
+// 			// max_index = lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]);
+// 			// max_minus_index = -1;
+// 			return ;
 // 		}
+// 		if (max_index >= b->length / 2 && max_minus_index >= b->length / 2 && max_minus_index != -1)
+// 		{
+// 			if (max_index > max_minus_index)
+// 			{
+// 				push_a(a,b,max_index);
+// 				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 2]) + 1);
+// 			}
+// 			else if (max_index <= max_minus_index)
+// 			{
+// 				push_a(a,b,max_minus_index);	
+// 				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]) + 1);
+// 				sa(a,1);
+// 			}
+// 		}
+// 		else if (max_index <= b->length / 2 && max_minus_index <= b->length / 2 && max_minus_index != -1)
+// 		{
+// 			if (max_index < max_minus_index)
+// 			{
+// 				push_a(a,b,max_index);
+// 				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 2]) + 1);
+// 			}
+// 			else if (max_index >= max_minus_index)
+// 			{
+// 				push_a(a,b,max_minus_index);	
+// 				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]) + 1);
+// 				sa(a,1);
+// 			}
+// 		}
+// 		else if (max_index <= b->length / 2 && max_minus_index >= b->length / 2 && max_minus_index != -1)
+// 		{
+// 			if (max_index < b->length - max_minus_index)
+// 			{
+// 				push_a(a,b,max_index);
+// 				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 2]) + 1);
+// 			}
+// 			else {
+// 				push_a(a,b,max_minus_index);
+// 				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]) + 1);
+// 				sa(a,1);
+// 			}
+// 		}
+// 		else if (max_index >= b->length / 2 && max_minus_index <= b->length / 2 && max_minus_index != -1) // warning
+// 		{
+// 			if (max_index < b->length - max_minus_index)
+// 			{
+// 				push_a(a,b,max_index);
+// 				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 2]) + 1);
+// 			}
+// 			else {
+// 				push_a(a,b,max_minus_index);
+// 				push_a(a,b,lst_index_of(b->arr,sorted_arr.length,sorted_arr.arr[sorted_arr.length - 1]) + 1);
+// 				sa(a,1);
+// 			}
+// 		}
+// 		else
+// 			push_a(a,b,max_index);
+// 		if (max_minus_index != -1)
+// 			sorted_arr.length -= 2;
+// 		else
+// 			sorted_arr.length--;
 // 	}
-// 	ft_printf("((((%d))))",i);
+// 	// ft_printf("[[[[%d]]]]",i);
 // }
 
+int	where_to_place(t_stack *stack,int nb)
+{
+	int i;
+
+	i = 0;
+	if (nb < stack->arr[lst_min(stack->arr,stack->length)])
+		return lst_min(stack->arr,stack->length);
+	else if (nb > stack->arr[lst_max(stack->arr,stack->length)])
+		return lst_max(stack->arr,stack->length) + 1;
+	while (i < stack->length)
+	{
+		if (i > 0 && nb < stack->arr[i] && nb > stack->arr[i - 1])
+            return i;
+        i++;
+	}
+	return (0); // this case is impossible
+}
+void push_swap(t_stack *a,t_stack *b)
+{
+	int max_index;
+	int i = 0;
+	while (b->length)
+	{
+		max_index = lst_max(b->arr,b->length);
+		if (max_index < b->length / 2)
+		{
+			while (max_index--)
+			{
+				rb(b,1);i++;
+			}
+			pa(a,b);i++;
+		}
+		else if (b->length / 2 <= max_index)
+		{
+			while (b->length != max_index++)
+			{
+				rrb(b,1);i++;
+			}
+			pa(a,b);i++;
+		}
+	}
+	ft_printf("((((%d))))",i);
+}
+int get_cost_index(t_stack *stack, int nb)
+{
+	int i;
+
+	i = 0;
+	if (nb < stack->arr[lst_min(stack->arr,stack->length)])
+		return lst_min(stack->arr,stack->length);
+	else if (nb > stack->arr[lst_max(stack->arr,stack->length)])
+		return lst_max(stack->arr,stack->length);
+	while (i < stack->length)
+	{
+		if (i > 0 && nb < stack->arr[i] && nb > stack->arr[i - 1])
+		{
+			if (i > stack->length / 2)
+				return stack->length - i;
+            return i;
+		}
+        i++;
+	}
+	return (0); // this case is impossible
+}
+
+int *lst_cost(t_stack *a,t_stack *b)
+{
+	// int cost[a->length - 3];
+	int i;
+	int cost;
+	int *_cost;
+	
+	i = 0;
+	_cost = (int *) malloc(sizeof(int) * b->length);
+	cost = 0;
+
+	while (i < b->length)
+	{
+		cost = get_cost_index(a,b->arr[i]);
+		if (cost > a->length / 2)
+			cost = a->length - cost;
+		if (i <= b->length / 2)
+		{
+			_cost[i] = cost + i;
+			// ft_printf("[%d]",_cost[i]);
+		}
+		else if (i > b->length / 2)
+		{
+			_cost[i] = cost + b->length - i;
+			// ft_printf("[%d]",_cost[i]);
+		}
+		i++;
+	}
+	return (_cost);
+}
 
 // nbdaw n9su 5 b 5 ila b9at lina chi 7aja 9el mn 5 npushiwha kamla
 void lst_large_case(t_stack *a,t_stack *b, int shank_length)
@@ -392,11 +461,77 @@ void lst_large_case(t_stack *a,t_stack *b, int shank_length)
 			sorted_arr.length -= shank_length; // this should change depend on chank size
 		}
 	}
+	// ft_printf("[[[%d]]]",i);
+	// return ;
+	// return ;
 	// if (a->length <= 5) // sort remaining in stack a
 	// 	lst_case_4_5(a,b);
 	// else
-	while (a->length)
+	while (a->length > 5)
 		pb(a,b);
 	// ft_printf("[[[%d]]]",i);
-	push_swap(a,b);
+	// push_swap(a,b);
+	lst_case_5(a,b);
+	int *_cost;
+	int min_cost_index;
+	int place;    // which place should it be (number πsents from stack b) in stack a
+
+
+	// while (a->length > 5)
+	// 	pb(a,b);
+
+	// lst_case_5(a,b);
+
+	while (b->length)										// EACH ONE SHOULD BE PLACED IN ITS PLACE IN A
+	{
+		_cost = lst_cost(a,b);
+		min_cost_index = lst_min(_cost,b->length);
+		// ft_printf("\n==> lst min %d",min_cost_index);
+		// lst_print(_cost,b->length);
+		// lst_print(b->arr,b->length);
+		// ft_printf("\n");
+		// lst_print(a->arr,a->length);
+		// ft_printf("\n");
+		place = where_to_place(a,b->arr[min_cost_index]);
+		if (place < a->length / 2)
+		{
+			while (place > 0 && place--)
+			{
+				if (min_cost_index < b->length / 2 && (min_cost_index > 0 && min_cost_index--))
+				{
+					rr(a,b);
+				}
+				else
+					ra(a,1);
+			}
+			push_a(a,b,min_cost_index);
+		}
+		else if (a->length / 2 <= place)
+		{
+			while (a->length != place++)
+			{
+				if (b->length / 2 <= min_cost_index && b->length != min_cost_index++)
+					rrr(a,b);
+				else
+					rra(a,1);
+			}
+			if (min_cost_index <= b->length)
+				push_a(a,b,min_cost_index);
+		}
+	}
+	int min_index = lst_min(a->arr,a->length);
+	if (min_index < a->length / 2)
+		{
+			while (min_index--)
+			{
+				ra(a,1);
+			}
+		}
+		else if (a->length / 2 <= min_index)
+		{
+			while (a->length != min_index++)
+			{
+				rra(a,1);
+			}
+		}
 }
