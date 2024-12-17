@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:08:42 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/14 09:12:24 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/17 21:11:46 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ void	lst_case_4_5(t_stack *a,t_stack *b);
 void	lst_case_5(t_stack *a,t_stack *b);
 void	lst_large_case(t_stack *a,t_stack *b, int shank_length);
 int lst_max(int *lst,int length);
-
+int *longest_increasing_subsequence(int arr[], int n, int *result_size);
 #endif

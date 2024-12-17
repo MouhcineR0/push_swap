@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:56:18 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/17 20:42:21 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/17 22:01:27 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,27 +90,6 @@ void	lst_case_5(t_stack *a,t_stack *b)
 	lst_case_4_5(a,b);
 	pa(a,b);
 }
-
-// start -------------------------------
-
-int *longest_increasing_subsequence(int arr[], int n) {
-    int *dp;
-	dp = malloc(n * sizeof(int));
-    int maxLength = 1;
-
-    for (int i = 0; i < n; i++) {
-        dp[i] = 1;
-    }
-    for (int i = 1; i < n; i++) {
-        for (int j = 0; j < i; j++) {
-            if (arr[i] > arr[j] && dp[i] < dp[j] + 1) {
-                dp[i] = dp[j] + 1;
-            }
-        }
-    }
-	return dp;
-}
-// end ---------------------------------------------------
 
 int	shank_element(t_stack *shank,t_stack *a,int shank_length)
 {
@@ -291,9 +270,23 @@ void low_cost_move(t_stack *a,t_stack *b)
 	int min_cost_index;
 	int place;    // which place should it be (number πsents from stack b) in stack a
 
-	while (a->length > 5)
-		pb(a,b);
-	lst_case_5(a,b);
+	// while (a->length > 5)
+	// 	pb(a,b);
+	// lst_case_5(a,b);
+	int size;
+	int *subseq = longest_increasing_subsequence(a->arr,a->length,&size);
+	int i = 0;
+	while (a->length != size)
+	{
+		if (a->arr[0] == subseq[i])
+		{
+			i++;
+			ra(a,1);
+		}
+		else
+			pb(a,b);
+	}
+	// return ;
 	while (b->length)										// EACH ONE SHOULD BE PLACED IN ITS PLACE IN A
 	{
 		_cost = lst_cost(a,b);

@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 20:17:02 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/17 17:40:18 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/17 22:02:03 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,8 @@ int main(int argc, char const *argv[])
 		if (is_duplicated(a))
 			return (RaiseError());
 		Sort(&a,&b);
-		lst_print(a.arr,a.length);
-		lst_print(b.arr,b.length);
+		// lst_print(a.arr,a.length);
+		// lst_print(b.arr,b.length);
 		free(a.arr);
 		free(b.arr);
 	}
