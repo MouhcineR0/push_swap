@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:50:37 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/18 12:50:58 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/18 20:17:42 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	is_number(char *str)
 	return (1);
 }
 
-int	fill(char **a, t_stack *stack_a, int length) // fill in the stack a
+int	fill(char **a, t_stack *stack_a, int length)
 {
 	int		i;
 	int		j;

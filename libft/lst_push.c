@@ -6,13 +6,13 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 11:44:45 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/08 19:34:33 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/18 21:14:33 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	lst_push(int *arr, int nb,int length)
+void	lst_push(int *arr, int nb, int length)
 {
 	int	i;
 
@@ -21,7 +21,7 @@ void	lst_push(int *arr, int nb,int length)
 		i = 0;
 		while (length)
 		{
-			length--;	
+			length--;
 			arr[length + 1] = arr[length];
 		}
 	}

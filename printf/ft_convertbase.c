@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:10:14 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/06 13:53:36 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/18 21:15:10 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	convert_base_pointer(unsigned long p, char **str, char *format, int *i)
 		return (1);
 	}
 	base_len = ft_strlen(format);
-	ft_putstr_fd("0x", 1);	
+	ft_putstr_fd("0x", 1);
 	*i += 2;
 	ft_putbase(p, format, base_len, i);
 	return (1);

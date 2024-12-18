@@ -6,13 +6,13 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 20:17:02 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/18 12:50:46 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/18 21:48:03 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char const **argv)
+int	main(int argc, char **argv)
 {
 	t_stack	a;
 	t_stack	b;
@@ -31,7 +31,7 @@ int	main(int argc, char const **argv)
 			return (raise_error());
 		if (is_duplicated(a))
 			return (raise_error());
-		Sort(&a, &b);
+		sort(&a, &b);
 		free(a.arr);
 		free(b.arr);
 	}

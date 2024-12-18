@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 19:55:13 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/18 19:59:18 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/18 20:41:20 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	count_maxlen(t_ls *two_lst, int *max_len, int *end_index, int size)
 	}
 }
 
-int	*longest_increasing_subsequence(int *arr, int n, int *result_size)
+int	*longest_sub(int *arr, int n, int *result_size)
 {
 	t_ls		two_lst;
 	int			*lis;

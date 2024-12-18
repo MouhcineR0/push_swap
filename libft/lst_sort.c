@@ -6,17 +6,17 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 19:07:05 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/10 20:14:17 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/18 21:14:53 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	lst_sort(int *lst,int length)
+void	lst_sort(int *lst, int length)
 {
-	int sorted;
-	int i;
-	int tmp;
+	int	sorted;
+	int	i;
+	int	tmp;
 
 	sorted = 0;
 	while (!sorted)
