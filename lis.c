@@ -1,60 +1,82 @@
-#include <stdio.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lis.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/18 19:55:13 by rmouhcin          #+#    #+#             */
+/*   Updated: 2024/12/18 19:59:18 by rmouhcin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int *lst_fill(int *arr, int length, int val)
+int	*lst_fill(int *arr, int length, int val)
 {
-	int i;
+	int	i;
 
 	i = 0;
+	arr = malloc(length * sizeof(int));
 	while (i++ < length)
-	{
 		arr[i] = val;
-	}
 	return (arr);
 }
 
-int *longest_increasing_subsequence(int *arr, int n, int *result_size) {
-    int *dp = malloc(n * sizeof(int));
-    int *prev = malloc(n * sizeof(int));
-    int *lis;
-    int max_length = 0, end_index = 0;
-	int i;
-	int j;
+void	get_ls(int *arr, t_ls *two_lst, int length)
+{
+	int	i;
+	int	j;
 
-	dp = lst_fill(dp,n,1);
-	prev = lst_fill(prev,n,-1);
 	i = 1;
-	while (i++ < n)
+	while (i++ < length)
 	{
 		j = 0;
 		while (j++ < i)
 		{
-			if (arr[i] > arr[j] && dp[i] < dp[j] + 1)
+			if (arr[i] > arr[j] && two_lst->ls[i] < two_lst->ls[j] + 1)
 			{
-				dp[i] = dp[j] + 1;
-				prev[i] = j;
+				two_lst->ls[i] = two_lst->ls[j] + 1;
+				two_lst->prev[i] = j;
 			}
 		}
 	}
+}
+
+void	count_maxlen(t_ls *two_lst, int *max_len, int *end_index, int size)
+{
+	int	i;
+
 	i = 0;
-	while (i++ < n)
+	while (i++ < size)
 	{
-		if (dp[i] > max_length)
+		if (two_lst->ls[i] > *max_len)
 		{
-			max_length = dp[i];
-			end_index = i;
+			*max_len = two_lst->ls[i];
+			*end_index = i;
 		}
 	}
-    lis = malloc(max_length * sizeof(int));
-    int k = max_length - 1;
-    while (end_index != -1) {
-        lis[k--] = arr[end_index];
-        end_index = prev[end_index];
-    }
-    *result_size = max_length;
-    free(dp);
-    free(prev);
+}
 
-    return lis;
+int	*longest_increasing_subsequence(int *arr, int n, int *result_size)
+{
+	t_ls		two_lst;
+	int			*lis;
+	int			max_length;
+	int			end_index;
+	int			k;
+
+	(1) && (max_length = 0, end_index = 0);
+	two_lst.ls = lst_fill(two_lst.ls, n, 1);
+	two_lst.prev = lst_fill(two_lst.prev, n, -1);
+	get_ls(arr, &two_lst, n);
+	count_maxlen(&two_lst, &max_length, &end_index, n);
+	lis = malloc(max_length * sizeof(int));
+	k = max_length - 1;
+	while (end_index != -1)
+		(1) && (lis[k--] = arr[end_index], end_index = two_lst.prev[end_index]);
+	*result_size = max_length;
+	free(two_lst.ls);
+	free(two_lst.prev);
+	return (lis);
 }
