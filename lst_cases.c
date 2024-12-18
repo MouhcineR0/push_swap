@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:56:18 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/17 22:01:27 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/18 09:48:04 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,230 +91,230 @@ void	lst_case_5(t_stack *a,t_stack *b)
 	pa(a,b);
 }
 
-int	shank_element(t_stack *shank,t_stack *a,int shank_length)
-{
-	int left;
-	int right;
-	int i;
+// int	shank_element(t_stack *shank,t_stack *a,int shank_length)
+// {
+// 	int left;
+// 	int right;
+// 	int i;
 
-	left = 0;
-	right = a->length - 1;
-	while (left <= right)
-	{
-		i = 0;
-		while (i < shank_length) // this should change depend on chank size
-		{
-			if (shank->arr[i] == a->arr[left])
-				return (left);
-			else if (shank->arr[i] == a->arr[right])
-				return (right);
-			i++;
-		}
-		left++;
-		right--;
-	}
-	return (-1);
-}
+// 	left = 0;
+// 	right = a->length - 1;
+// 	while (left <= right)
+// 	{
+// 		i = 0;
+// 		while (i < shank_length) // this should change depend on chank size
+// 		{
+// 			if (shank->arr[i] == a->arr[left])
+// 				return (left);
+// 			else if (shank->arr[i] == a->arr[right])
+// 				return (right);
+// 			i++;
+// 		}
+// 		left++;
+// 		right--;
+// 	}
+// 	return (-1);
+// }
 
-void push_a(t_stack *a,t_stack *b,int index)
-{
-	if (index < b->length / 2)
-	{
-		while (index > 0 && index--)
-		{
-			rb(b,1);
-		}
-		pa(a,b);
-	}
-	else if (b->length / 2 <= index)
-	{
-		while (b->length != index++)
-		{
-			rrb(b,1);
-		}
-		pa(a,b);
-	}
-}
-int	where_to_place(t_stack *stack,int nb)
-{
-	int i;
+// void push_a(t_stack *a,t_stack *b,int index)
+// {
+// 	if (index < b->length / 2)
+// 	{
+// 		while (index > 0 && index--)
+// 		{
+// 			rb(b,1);
+// 		}
+// 		pa(a,b);
+// 	}
+// 	else if (b->length / 2 <= index)
+// 	{
+// 		while (b->length != index++)
+// 		{
+// 			rrb(b,1);
+// 		}
+// 		pa(a,b);
+// 	}
+// }
+// int	where_to_place(t_stack *stack,int nb)
+// {
+// 	int i;
 
-	i = 0;
-	if (nb < stack->arr[lst_min(stack->arr,stack->length)])
-		return lst_min(stack->arr,stack->length);
-	else if (nb > stack->arr[lst_max(stack->arr,stack->length)])
-		return lst_max(stack->arr,stack->length) + 1;
-	while (i < stack->length)
-	{
-		if (i > 0 && nb < stack->arr[i] && nb > stack->arr[i - 1])
-            return i;
-        i++;
-	}
-	return (0); // this case is impossible
-}
-void push_swap(t_stack *a,t_stack *b)
-{
-	int max_index;
-	int i = 0;
-	while (b->length)
-	{
-		max_index = lst_max(b->arr,b->length);
-		if (max_index < b->length / 2)
-		{
-			while (max_index--)
-				rb(b,1);i++;
-			pa(a,b);i++;
-		}
-		else if (b->length / 2 <= max_index)
-		{
-			while (b->length != max_index++)
-				rrb(b,1);i++;
-			pa(a,b);i++;
-		}
-	}
-}
-int get_cost_index(t_stack *stack, int nb)
-{
-	int i;
+// 	i = 0;
+// 	if (nb < stack->arr[lst_min(stack->arr,stack->length)])
+// 		return lst_min(stack->arr,stack->length);
+// 	else if (nb > stack->arr[lst_max(stack->arr,stack->length)])
+// 		return lst_max(stack->arr,stack->length) + 1;
+// 	while (i < stack->length)
+// 	{
+// 		if (i > 0 && nb < stack->arr[i] && nb > stack->arr[i - 1])
+//             return i;
+//         i++;
+// 	}
+// 	return (0); // this case is impossible
+// }
+// void push_swap(t_stack *a,t_stack *b)
+// {
+// 	int max_index;
+// 	int i = 0;
+// 	while (b->length)
+// 	{
+// 		max_index = lst_max(b->arr,b->length);
+// 		if (max_index < b->length / 2)
+// 		{
+// 			while (max_index--)
+// 				rb(b,1);i++;
+// 			pa(a,b);i++;
+// 		}
+// 		else if (b->length / 2 <= max_index)
+// 		{
+// 			while (b->length != max_index++)
+// 				rrb(b,1);i++;
+// 			pa(a,b);i++;
+// 		}
+// 	}
+// }
+// int get_cost_index(t_stack *stack, int nb)
+// {
+// 	int i;
 
-	i = 0;
-	if (nb < stack->arr[lst_min(stack->arr,stack->length)])
-		return lst_min(stack->arr,stack->length);
-	else if (nb > stack->arr[lst_max(stack->arr,stack->length)])
-		return lst_max(stack->arr,stack->length);
-	while (i < stack->length)
-	{
-		if (i > 0 && nb < stack->arr[i] && nb > stack->arr[i - 1])
-		{
-			if (i > stack->length / 2)
-				return stack->length - i;
-            return i;
-		}
-        i++;
-	}
-	return (0); // this case is impossible
-}
+// 	i = 0;
+// 	if (nb < stack->arr[lst_min(stack->arr,stack->length)])
+// 		return lst_min(stack->arr,stack->length);
+// 	else if (nb > stack->arr[lst_max(stack->arr,stack->length)])
+// 		return lst_max(stack->arr,stack->length);
+// 	while (i < stack->length)
+// 	{
+// 		if (i > 0 && nb < stack->arr[i] && nb > stack->arr[i - 1])
+// 		{
+// 			if (i > stack->length / 2)
+// 				return stack->length - i;
+//             return i;
+// 		}
+//         i++;
+// 	}
+// 	return (0); // this case is impossible
+// }
 
-int *lst_cost(t_stack *a,t_stack *b)
-{
-	int i;
-	int cost;
-	int *_cost;
+// int *lst_cost(t_stack *a,t_stack *b)
+// {
+// 	int i;
+// 	int cost;
+// 	int *_cost;
 	
-	i = 0;
-	_cost = (int *) malloc(sizeof(int) * b->length);
-	cost = 0;
+// 	i = 0;
+// 	_cost = (int *) malloc(sizeof(int) * b->length);
+// 	cost = 0;
 
-	while (i < b->length)
-	{
-		cost = get_cost_index(a,b->arr[i]);
-		if (cost > a->length / 2)
-			cost = a->length - cost;
-		if (i <= b->length / 2)
-			_cost[i] = cost + i;
-		else if (i > b->length / 2)
-			_cost[i] = cost + b->length - i;
-		i++;
-	}
-	return (_cost);
-}
+// 	while (i < b->length)
+// 	{
+// 		cost = get_cost_index(a,b->arr[i]);
+// 		if (cost > a->length / 2)
+// 			cost = a->length - cost;
+// 		if (i <= b->length / 2)
+// 			_cost[i] = cost + i;
+// 		else if (i > b->length / 2)
+// 			_cost[i] = cost + b->length - i;
+// 		i++;
+// 	}
+// 	return (_cost);
+// }
 
-void add_remaining(t_stack *a,t_stack *b)
-{
-	int min_index;
+// void add_remaining(t_stack *a,t_stack *b)
+// {
+// 	int min_index;
 
-	min_index = lst_min(a->arr,a->length);
-	if (min_index < a->length / 2)
-	{
-		while (min_index--)
-			ra(a,1);
-	}
-	else if (a->length / 2 <= min_index)
-	{
-		while (a->length != min_index++)
-			rra(a,1);
-	}
-}
+// 	min_index = lst_min(a->arr,a->length);
+// 	if (min_index < a->length / 2)
+// 	{
+// 		while (min_index--)
+// 			ra(a,1);
+// 	}
+// 	else if (a->length / 2 <= min_index)
+// 	{
+// 		while (a->length != min_index++)
+// 			rra(a,1);
+// 	}
+// }
 
-//  should create separate function for while loops
-void cost_move(t_stack *a,t_stack *b,int *min_cost_index,int *place)
-{
-	if (*place < a->length / 2)
-	{
-		while ((*place) > 0 && (*place)--)
-		{
-			if (*min_cost_index < b->length / 2 && (*min_cost_index > 0 && (*min_cost_index)--))
-				rr(a,b);
-			else
-				ra(a,1);
-		}
-		push_a(a,b,*min_cost_index);
-	}
-	else if (a->length / 2 <= *place)
-	{
-		while (a->length != (*place)++)
-		{
-			if (b->length / 2 <= *min_cost_index && b->length != (*min_cost_index)++)
-				rrr(a,b);
-			else
-				rra(a,1);
-		}
-		if (*min_cost_index <= b->length)
-			push_a(a,b,*min_cost_index);
-	}
-}
+// //  should create separate function for while loops
+// void cost_move(t_stack *a,t_stack *b,int *min_cost_index,int *place)
+// {
+// 	if (*place < a->length / 2)
+// 	{
+// 		while ((*place) > 0 && (*place)--)
+// 		{
+// 			if (*min_cost_index < b->length / 2 && (*min_cost_index > 0 && (*min_cost_index)--))
+// 				rr(a,b);
+// 			else
+// 				ra(a,1);
+// 		}
+// 		push_a(a,b,*min_cost_index);
+// 	}
+// 	else if (a->length / 2 <= *place)
+// 	{
+// 		while (a->length != (*place)++)
+// 		{
+// 			if (b->length / 2 <= *min_cost_index && b->length != (*min_cost_index)++)
+// 				rrr(a,b);
+// 			else
+// 				rra(a,1);
+// 		}
+// 		if (*min_cost_index <= b->length)
+// 			push_a(a,b,*min_cost_index);
+// 	}
+// }
 
-void low_cost_move(t_stack *a,t_stack *b)
-{
-	int *_cost;
-	int min_cost_index;
-	int place;    // which place should it be (number πsents from stack b) in stack a
+// void low_cost_move(t_stack *a,t_stack *b)
+// {
+// 	int *_cost;
+// 	int min_cost_index;
+// 	int place;    // which place should it be (number πsents from stack b) in stack a
 
-	// while (a->length > 5)
-	// 	pb(a,b);
-	// lst_case_5(a,b);
-	int size;
-	int *subseq = longest_increasing_subsequence(a->arr,a->length,&size);
-	int i = 0;
-	while (a->length != size)
-	{
-		if (a->arr[0] == subseq[i])
-		{
-			i++;
-			ra(a,1);
-		}
-		else
-			pb(a,b);
-	}
-	// return ;
-	while (b->length)										// EACH ONE SHOULD BE PLACED IN ITS PLACE IN A
-	{
-		_cost = lst_cost(a,b);
-		min_cost_index = lst_min(_cost,b->length);
-		place = where_to_place(a,b->arr[min_cost_index]);
-		cost_move(a,b,&min_cost_index,&place); //  this is where it places each in its place above
-	}
-	add_remaining(a,b);
-}
+// 	// while (a->length > 5)
+// 	// 	pb(a,b);
+// 	// lst_case_5(a,b);
+// 	int size;
+// 	int *subseq = longest_increasing_subsequence(a->arr,a->length,&size);
+// 	int i = 0;
+// 	while (a->length != size)
+// 	{
+// 		if (a->arr[0] == subseq[i])
+// 		{
+// 			i++;
+// 			ra(a,1);
+// 		}
+// 		else
+// 			pb(a,b);
+// 	}
+// 	// return ;
+// 	while (b->length)										// EACH ONE SHOULD BE PLACED IN ITS PLACE IN A
+// 	{
+// 		_cost = lst_cost(a,b);
+// 		min_cost_index = lst_min(_cost,b->length);
+// 		place = where_to_place(a,b->arr[min_cost_index]);
+// 		cost_move(a,b,&min_cost_index,&place); //  this is where it places each in its place above
+// 	}
+// 	add_remaining(a,b);
+// }
 
-// shanks methods 
+// // shanks methods 
 
-void shank_move(t_stack *a,t_stack *b,int *tmp)
-{
-	if ((*tmp) < a->length / 2)
-	{
-		while ((*tmp)--)
-			ra(a,1);
-		pb(a,b);
-	}
-	else if (a->length / 2 <= (*tmp))
-	{
-		while (a->length != (*tmp)++)
-			rra(a,1);
-		pb(a,b);
-	}
-	(*tmp) = -1;
-}
+// void shank_move(t_stack *a,t_stack *b,int *tmp)
+// {
+// 	if ((*tmp) < a->length / 2)
+// 	{
+// 		while ((*tmp)--)
+// 			ra(a,1);
+// 		pb(a,b);
+// 	}
+// 	else if (a->length / 2 <= (*tmp))
+// 	{
+// 		while (a->length != (*tmp)++)
+// 			rra(a,1);
+// 		pb(a,b);
+// 	}
+// 	(*tmp) = -1;
+// }
 void lst_large_case(t_stack *a,t_stack *b, int shank_length)
 {
 	t_stack sorted_arr;

@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 11:57:59 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/17 21:04:01 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/18 10:02:13 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,67 +63,6 @@ int lst_max(int *lst,int length)
 	}
 	return -1;
 }
-
-int non_sortedasc_index(int *lst,int length)
-{
-	int i;
-	
-	i = 0;
-	while (i + 1 < length)
-	{
-		if (lst[i] > lst[i + 1])
-			return i;
-		i++;
-	}
-	if (lst[i] < lst[i - 1])
-		return (++i);
-	return -1;
-}
-int non_sorteddisc_index(int *lst,int length)
-{
-	int i;
-	
-	i = 0;
-	while (i + 1 < length)
-	{
-		if (lst[i] < lst[i + 1])
-			return i;
-		i++;
-	}
-	return -1;
-}
-
-int many_notsorted_asc(int *arr,int length)
-{
-	int many;
-	int i;
-
-	i = 0;
-	many = 0;
-	while (i + 1 < length)
-	{
-		if (arr[i] > arr[i + 1])
-			many++;
-		i++;
-	}
-	return many;
-}
-
-// method 1 nhzomjoj mn fo9 stack a n7tuhum f b w nsortiw fihum 3la 7asab dok 2 li 7tina f b
-
-// ==> method 2 n9smu array 3la joj , w nsortiw manuel 3la 7asab chnu khaso ytsorta b swap only
-// nhzu lmin f stack a w f stack b bach nsiviw start index dyalhum w ncheckiw kola mera wach msorti
-// ncheckiw ta wach 1 li b9a lina mamsortich ye3ni rah kolchi m9ad
-
-// method 3 nhzo ga3 les elemets dyal a w n7tuhum f b w nhzzo kola mra lwlani b 
-// w n7tuh f list khawya a 3la 7asab wach kbira wla sghira
-
-// method 4 kola mera n9leb 3la lmin f stack b w npushih f stack a
-
-// method 5 n handliw kola size bo7do ===>
-// length 3 : nhard codiw
-// length 4 - 5 : nlo7o f stack b samllets 2 number or 1 w dok 3  nhadliwhum b tari9a lwlaniya
-// length > 5 ncatiw kola part w nhandliwhum
 
 void	Sort(t_stack *a,t_stack *b)
 {

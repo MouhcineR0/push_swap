@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "push_swap.h"
 
-int *longest_increasing_subsequence(int arr[], int n, int *result_size) {
+int *longest_increasing_subsequence(int *arr, int n, int *result_size) {
     int *dp = malloc(n * sizeof(int));
     int *prev = malloc(n * sizeof(int));
     int *lis;

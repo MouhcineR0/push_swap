@@ -6,16 +6,16 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 20:17:02 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/17 22:02:03 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:15:27 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int is_duplicated(t_stack stack)
+int	is_duplicated(t_stack stack)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i + 1 < stack.length)
@@ -32,7 +32,7 @@ int is_duplicated(t_stack stack)
 	return (0);
 }
 
-int isNumber(char *str)
+int	is_number(char *str)
 {
 	if (*str == '-' || *str == '+')
 		str++;
@@ -45,22 +45,22 @@ int isNumber(char *str)
 	return (1);
 }
 
-int fill(char **a,t_stack *stack_a,int length) // fill in the stack a
+int	fill(char **a, t_stack *stack_a, int length) // fill in the stack a
 {
-	int	i;
-	int	j;
-	char **split;
- 
+	int		i;
+	int		j;
+	char	**split;
+
 	i = 1;
 	j = 0;
 	while (i < length)
 	{
-		split = ft_split(a[i],' ');
+		split = ft_split(a[i], ' ');
 		if (!split)
 			return (0);
 		while (*split)
 		{
-			if (!isNumber(*split))
+			if (!is_number(*split))
 				return (0);
 			stack_a->arr[j] = ft_atoi(*split);
 			(split)++;
@@ -71,20 +71,21 @@ int fill(char **a,t_stack *stack_a,int length) // fill in the stack a
 	return (1);
 }
 
-int verify_args(char **a, int length) // verifying and calculates the length of stack a
+int	verify_args(char **a, int length)
 {
-	int	i;
-	int	j;
-	char **split;
- 
+	int		i;
+	int		j;
+	char	**split;
+
 	i = 1;
 	j = 0;
 	while (i < length)
 	{
-		split = ft_split(a[i],' ');
+		split = ft_split(a[i], ' ');
 		while (*split)
 		{
-			if (!isNumber(*split) || ft_atoi(*split) > 2147483647 || ft_atoi(*split) < -2147483648)
+			if (!is_number(*split) || ft_atoi(*split) > 2147483647
+				|| ft_atoi(*split) < -2147483648)
 				return (0);
 			(split)++;
 			j++;
@@ -94,38 +95,36 @@ int verify_args(char **a, int length) // verifying and calculates the length of 
 	return (j);
 }
 
-int RaiseError()
+int	raise_error(void)
 {
-	ft_putstr_fd("Error\n",2);
-	return 0;
+	ft_putstr_fd("Error\n", 2);
+	return (0);
 }
 
-int main(int argc, char const *argv[])
+int	main(int argc, char const **argv)
 {
-	t_stack a;
-	t_stack b;
+	t_stack	a;
+	t_stack	b;
 
 	b.length = 0;
 	if (argc == 1)
 		return (0);
-	a.length = verify_args((char **)argv,argc);
+	a.length = verify_args((char **)argv, argc);
 	if (a.length)
 	{
 		a.arr = (int *)malloc(sizeof(int) * a.length);
 		b.arr = (int *)malloc(sizeof(int) * a.length);
 		if (!a.arr || !a.arr)
-			return RaiseError();
-		if (!fill((char **)argv,&a,argc))
-			return (RaiseError());
+			return (raise_error());
+		if (!fill((char **)argv, &a, argc))
+			return (raise_error());
 		if (is_duplicated(a))
-			return (RaiseError());
-		Sort(&a,&b);
-		// lst_print(a.arr,a.length);
-		// lst_print(b.arr,b.length);
+			return (raise_error());
+		Sort(&a, &b);
 		free(a.arr);
 		free(b.arr);
 	}
 	else
-		return RaiseError();
-	return 0;
+		return (raise_error());
+	return (0);
 }
