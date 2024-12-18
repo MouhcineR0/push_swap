@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Instruction3.c                                     :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/11 09:51:20 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/18 15:42:12 by rmouhcin         ###   ########.fr       */
+/*   Created: 2024/12/18 14:07:05 by rmouhcin          #+#    #+#             */
+/*   Updated: 2024/12/18 14:10:03 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "libft.h"
 
-// rrr : rra and rrb at the same time.
-void	rrr(t_stack *a,t_stack *b, int print)
+int	ft_strcmp(char *s1, char *s2)
 {
-	rra(a,0),rrb(b,0);
-	(print) && (ft_printf("rrr\n"));
+	int	i;
+
+	i = 0;
+	while (s1[i] || s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
 }

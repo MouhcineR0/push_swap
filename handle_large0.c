@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hande_large0.c                                     :+:      :+:    :+:   */
+/*   handle_large0.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:57:10 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/18 09:57:19 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/18 15:46:14 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void push_a(t_stack *a,t_stack *b,int index)
 		{
 			rb(b,1);
 		}
-		pa(a,b);
+		pa(a,b,1);
 	}
 	else if (b->length / 2 <= index)
 	{
@@ -53,7 +53,7 @@ void push_a(t_stack *a,t_stack *b,int index)
 		{
 			rrb(b,1);
 		}
-		pa(a,b);
+		pa(a,b,1);
 	}
 }
 int	where_to_place(t_stack *stack,int nb)
@@ -84,13 +84,13 @@ void push_swap(t_stack *a,t_stack *b)
 		{
 			while (max_index--)
 				rb(b,1);i++;
-			pa(a,b);i++;
+			pa(a,b,1);i++;
 		}
 		else if (b->length / 2 <= max_index)
 		{
 			while (b->length != max_index++)
 				rrb(b,1);i++;
-			pa(a,b);i++;
+			pa(a,b,1);i++;
 		}
 	}
 }

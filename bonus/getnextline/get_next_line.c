@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:00:25 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/18 11:53:23 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/18 15:13:17 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	readfile(char **filecontent, ssize_t *byteread, int fd)
 	if (!buffer)
 		return (0);
 	*byteread = read(fd, buffer, BUFFER_SIZE);
-	while (*byteread > 0)
+	while (*byteread >= 0)
 	{
 		buffer[*byteread] = '\0';
 		freepointer = *filecontent;
@@ -85,7 +85,7 @@ int	readfile(char **filecontent, ssize_t *byteread, int fd)
 char	*get_next_line(int fd)
 {
 	static char	*filecontent;
-	ssize_t			byteread;
+	ssize_t		byteread;
 
 	byteread = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE >= 2147483647)

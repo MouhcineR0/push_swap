@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:56:18 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/18 09:48:04 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/18 15:45:13 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ void	lst_case_4_5(t_stack *a,t_stack *b)
 			while (--min_index)
 				ra(a,1);
 		}
-		pb(a,b);
+		pb(a,b,1);
 		lst_case_3(a);
-		pa(a,b);
+		pa(a,b,1);
 	}
 	else
 		lst_case_5(a,b);
@@ -86,9 +86,9 @@ void	lst_case_5(t_stack *a,t_stack *b)
 		while (--min_index)
 			ra(a,1);
 	}
-	pb(a,b);
+	pb(a,b,1);
 	lst_case_4_5(a,b);
-	pa(a,b);
+	pa(a,b,1);
 }
 
 // int	shank_element(t_stack *shank,t_stack *a,int shank_length)
@@ -271,7 +271,7 @@ void	lst_case_5(t_stack *a,t_stack *b)
 // 	int place;    // which place should it be (number πsents from stack b) in stack a
 
 // 	// while (a->length > 5)
-// 	// 	pb(a,b);
+// 	// 	pb(a,b,1);
 // 	// lst_case_5(a,b);
 // 	int size;
 // 	int *subseq = longest_increasing_subsequence(a->arr,a->length,&size);
@@ -284,7 +284,7 @@ void	lst_case_5(t_stack *a,t_stack *b)
 // 			ra(a,1);
 // 		}
 // 		else
-// 			pb(a,b);
+// 			pb(a,b,1);
 // 	}
 // 	// return ;
 // 	while (b->length)										// EACH ONE SHOULD BE PLACED IN ITS PLACE IN A
@@ -305,13 +305,13 @@ void	lst_case_5(t_stack *a,t_stack *b)
 // 	{
 // 		while ((*tmp)--)
 // 			ra(a,1);
-// 		pb(a,b);
+// 		pb(a,b,1);
 // 	}
 // 	else if (a->length / 2 <= (*tmp))
 // 	{
 // 		while (a->length != (*tmp)++)
 // 			rra(a,1);
-// 		pb(a,b);
+// 		pb(a,b,1);
 // 	}
 // 	(*tmp) = -1;
 // }

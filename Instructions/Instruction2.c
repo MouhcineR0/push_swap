@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 09:50:22 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/12 09:09:28 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/18 15:44:33 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void	rb(t_stack *b,int print)
 }
 
 // rr : ra and rb at the same time.
-void	rr(t_stack *a,t_stack *b)
+void	rr(t_stack *a,t_stack *b, int print)
 {
 	ra(a,0),rb(b,0);
-	ft_printf("rr\n");
+	(print) && (ft_printf("rr\n"));
 }
 
 void rra(t_stack *a,int print)

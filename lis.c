@@ -2,6 +2,18 @@
 #include <stdlib.h>
 #include "push_swap.h"
 
+int *lst_fill(int *arr, int length, int val)
+{
+	int i;
+
+	i = 0;
+	while (i++ < length)
+	{
+		arr[i] = val;
+	}
+	return (arr);
+}
+
 int *longest_increasing_subsequence(int *arr, int n, int *result_size) {
     int *dp = malloc(n * sizeof(int));
     int *prev = malloc(n * sizeof(int));
@@ -10,12 +22,8 @@ int *longest_increasing_subsequence(int *arr, int n, int *result_size) {
 	int i;
 	int j;
 
-	i = 0;
-	while (i++ < n)
-	{
-		dp[i] = 1;
-		prev[i] = -1;
-	}
+	dp = lst_fill(dp,n,1);
+	prev = lst_fill(prev,n,-1);
 	i = 1;
 	while (i++ < n)
 	{

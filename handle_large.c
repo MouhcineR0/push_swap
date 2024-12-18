@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:47:42 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/18 10:01:21 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/18 15:45:40 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void cost_move(t_stack *a,t_stack *b,int *min_cost_index,int *place)
 		while ((*place) > 0 && (*place)--)
 		{
 			if (*min_cost_index < b->length / 2 && (*min_cost_index > 0 && (*min_cost_index)--))
-				rr(a,b);
+				rr(a,b,1);
 			else
 				ra(a,1);
 		}
@@ -71,7 +71,7 @@ void cost_move(t_stack *a,t_stack *b,int *min_cost_index,int *place)
 		while (a->length != (*place)++)
 		{
 			if (b->length / 2 <= *min_cost_index && b->length != (*min_cost_index)++)
-				rrr(a,b);
+				rrr(a,b,1);
 			else
 				rra(a,1);
 		}
@@ -97,7 +97,7 @@ void low_cost_move(t_stack *a,t_stack *b)
 			ra(a,1);
 		}
 		else
-			pb(a,b);
+			pb(a,b,1);
 	}
 	while (b->length)										// EACH ONE SHOULD BE PLACED IN ITS PLACE IN A
 	{
@@ -115,13 +115,13 @@ void shank_move(t_stack *a,t_stack *b,int *tmp)
 	{
 		while ((*tmp)--)
 			ra(a,1);
-		pb(a,b);
+		pb(a,b,1);
 	}
 	else if (a->length / 2 <= (*tmp))
 	{
 		while (a->length != (*tmp)++)
 			rra(a,1);
-		pb(a,b);
+		pb(a,b,1);
 	}
 	(*tmp) = -1;
 }

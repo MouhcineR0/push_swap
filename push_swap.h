@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:08:42 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/18 11:51:07 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/18 16:09:59 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,22 @@ typedef struct t_stack {
 	int length;
 } t_stack ;
 
-// typedef struct t_shank {
-// 	int *arr;
-// 	int start;
-// 	int end;
-// 	int length; // length of shrunk
-// } t_shank ;
+typedef struct t_ls {
+	int *ls;
+	int *prev;
+} t_ls;
 
 void	sa(t_stack *a, int print);
 void	sb(t_stack *b, int print);
-void	ss(t_stack *a,t_stack *b);
-void	pa(t_stack *a,t_stack *b); // push in stack a
-void	pb(t_stack *a,t_stack *b); // push in stack b
+void	ss(t_stack *a,t_stack *b, int print);
+void	pa(t_stack *a,t_stack *b, int print); // push in stack a
+void	pb(t_stack *a,t_stack *b, int print); // push in stack b
 void	ra(t_stack *a, int print);
 void	rb(t_stack *b, int print);
-void	rr(t_stack *a,t_stack *b);
+void	rr(t_stack *a,t_stack *b, int print);
 void	rra(t_stack *a, int print);
 void	rrb(t_stack *b, int print);
-void	rrr(t_stack *a,t_stack *b);
+void	rrr(t_stack *a,t_stack *b, int print);
 int		is_sorted(int *arr ,int arr_len);
 void	Sort(t_stack *a,t_stack *b);
 int 	lst_min(int *lst,int length);
