@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 19:55:13 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/19 10:04:13 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:35:40 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	get_ls(int *arr, t_ls *two_lst, int length)
 		}
 		i++;
 	}
-	// free(two_lst->ls);
 }
 
 void	count_maxlen(t_ls *two_lst, int *max_len, int *end_index, int size)

@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:08:42 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/18 21:46:03 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:44:16 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,7 @@ int		verify_args(char **a, int length);
 int		raise_error(void);
 int		fill(char **a, t_stack *stack_a, int length);
 int		is_duplicated(t_stack stack);
+void	free_str(char **str);
+int		free_arr(int *arr1, int *arr2);
 
 #endif

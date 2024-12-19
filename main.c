@@ -6,26 +6,14 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 20:17:02 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/19 14:17:16 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:42:57 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_lsts(int **a, int **b)
-{
-	free(*a);
-	free(*b);
-}
-
-void ff()
-{
-	system("leaks push_swap");
-}
-
 int	main(int argc, char **argv)
 {
-	atexit(ff);
 	t_stack	a;
 	t_stack	b;
 
@@ -37,14 +25,13 @@ int	main(int argc, char **argv)
 	{
 		a.arr = (int *)malloc(sizeof(int) * a.length);
 		b.arr = (int *)malloc(sizeof(int) * a.length);
-		if (!a.arr || !a.arr)
+		if ((!a.arr || !a.arr) && free_arr(a.arr, b.arr))
 			return (raise_error());
-		if (!fill((char **)argv, &a, argc))
+		if (!fill((char **)argv, &a, argc) && free_arr(a.arr, b.arr))
 			return (raise_error());
-		if (is_duplicated(a))
+		if (is_duplicated(a) && free_arr(a.arr, b.arr))
 			return (raise_error());
 		sort(&a, &b);
-		// free_lsts(&(a.arr),&(b.arr));
 		free(a.arr);
 		free(b.arr);
 	}

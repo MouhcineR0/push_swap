@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:47:42 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/19 10:08:29 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/19 18:19:30 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	cost_move(t_stack *a, t_stack *b, int *min_cost_index, int *place)
 void	low_cost_move(t_stack *a, t_stack *b)
 {
 	int	*_cost;
-	int	min_cost_index;
+	int	min_cost;
 	int	i;
 	int	size;
 	int	*subseq;
@@ -102,14 +102,12 @@ void	low_cost_move(t_stack *a, t_stack *b)
 	}
 	while (b->length)
 	{
-		_cost = lst_cost(a, b);
-		min_cost_index = lst_min(_cost, b->length);
-		i = where_to_place(a, b->arr[min_cost_index]);
-		cost_move(a, b, &min_cost_index, &i);
+		(1) && (_cost = lst_cost(a, b), min_cost = lst_min(_cost, b->length));
+		i = where_to_place(a, b->arr[min_cost]);
+		cost_move(a, b, &min_cost, &i);
 		free(_cost);
 	}
-	free(subseq);
-	add_remaining(a);
+	return (free(subseq), add_remaining(a));
 }
 
 void	shank_move(t_stack *a, t_stack *b, int *tmp)

@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:50:37 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/19 14:18:21 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/19 18:23:09 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	is_duplicated(t_stack stack)
 	return (0);
 }
 
-void free_str(char **str)
+void	free_str(char **str)
 {
 	int	i;
 
@@ -71,14 +71,13 @@ int	fill(char **a, t_stack *stack_a, int length)
 	j = 0;
 	while (i < length)
 	{
-		split = ft_split(a[i], ' ');
-		tmp = split;
+		(1) && (split = ft_split(a[i], ' '), tmp = split);
 		if (!split)
 			return (0);
 		while (*split)
 		{
 			if (!is_number(*split))
-				return (0);
+				return (free_str(tmp), 0);
 			stack_a->arr[j] = ft_atoi(*split);
 			(split)++;
 			j++;
@@ -102,16 +101,15 @@ int	verify_args(char **a, int length)
 	{
 		split = ft_split(a[i], ' ');
 		tmp = split;
-		while (*split)
+		while (*split && j++)
 		{
 			if (!is_number(*split) || ft_atoi(*split) > 2147483647
 				|| ft_atoi(*split) < -2147483648)
-				{
-					free_str(tmp);
-					return (0);
-				}
+			{
+				free_str(tmp);
+				return (0);
+			}
 			(split)++;
-			j++;
 		}
 		free_str(tmp);
 		i++;
@@ -123,4 +121,11 @@ int	raise_error(void)
 {
 	ft_putstr_fd("Error\n", 2);
 	return (0);
+}
+
+int	free_arr(int *arr1, int *arr2)
+{
+	free(arr1);
+	free(arr2);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 10:17:21 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/18 21:47:58 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:50:10 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,27 @@ int	isvalid_instruction(char *str)
 int	swap_push(t_stack *a, t_stack *b)
 {
 	char	*buffer;
-	char	*instr;
+	char	**instr;
 
 	while (1)
 	{
 		buffer = get_next_line(0);
 		if (!buffer || !*buffer)
+		{
+			free(buffer);
 			return (1);
-		instr = ft_split(buffer, '\n')[0];
-		if (instr && isvalid_instruction(instr))
-			do_instruction(a, b, instr);
+		}
+		instr = ft_split(buffer, '\n');
+		free(buffer);
+		if (instr && isvalid_instruction(instr[0]))
+		{
+			do_instruction(a, b, instr[0]);
+			free_str(instr);
+		}
 		else
 		{
-			ft_putstr_fd("Error\n", 2);
-			return (0);
+			free_str(instr);
+			return (ft_putstr_fd("Error\n", 2), 0);
 		}
 	}
 	return (0);
@@ -83,15 +90,16 @@ int	main(int argc, char **argv)
 		return (0);
 	a.length = verify_args((char **)argv, argc);
 	if (!a.length)
-		raise_error();
+		return (raise_error());
 	a.arr = (int *)malloc(sizeof(int) * a.length);
 	b.arr = (int *)malloc(sizeof(int) * a.length);
 	if (!a.arr || !a.arr)
 		return (raise_error());
-	if (!fill((char **)argv, &a, argc) || is_duplicated(a))
+	if ((!fill((char **)argv, &a, argc)
+			|| is_duplicated(a)) && free_arr(a.arr, b.arr))
 		return (raise_error());
-	if (!swap_push(&a, &b))
-		return (0);
+	if (!swap_push(&a, &b) && free_arr(a.arr, b.arr))
+		return (raise_error());
 	if (is_sorted(a.arr, a.length) == -1 && b.length == 0)
 		ft_printf("OK\n");
 	else
