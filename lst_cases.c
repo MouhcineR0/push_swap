@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:56:18 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/18 21:39:00 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/19 09:23:29 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,6 @@ void	lst_large_case(t_stack *a, t_stack *b, int shank_length)
 			sorted_arr.length -= shank_length;
 		}
 	}
+	free(sorted_arr.arr);
 	low_cost_move(a, b);
 }

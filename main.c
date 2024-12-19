@@ -6,14 +6,26 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 20:17:02 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/18 21:48:03 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:17:16 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	free_lsts(int **a, int **b)
+{
+	free(*a);
+	free(*b);
+}
+
+void ff()
+{
+	system("leaks push_swap");
+}
+
 int	main(int argc, char **argv)
 {
+	atexit(ff);
 	t_stack	a;
 	t_stack	b;
 
@@ -32,6 +44,7 @@ int	main(int argc, char **argv)
 		if (is_duplicated(a))
 			return (raise_error());
 		sort(&a, &b);
+		// free_lsts(&(a.arr),&(b.arr));
 		free(a.arr);
 		free(b.arr);
 	}

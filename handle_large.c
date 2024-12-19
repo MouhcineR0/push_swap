@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:47:42 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/18 21:55:59 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/19 10:08:29 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,10 @@ void	low_cost_move(t_stack *a, t_stack *b)
 	(1) && (subseq = longest_sub(a->arr, a->length, &size), i = 0);
 	while (a->length != size)
 	{
-		if (a->arr[0] == subseq[i])
+		if (i < size && a->arr[0] == subseq[i])
 		{
-			i++;
 			ra(a, 1);
+			i++;
 		}
 		else
 			pb(a, b, 1);
@@ -106,6 +106,7 @@ void	low_cost_move(t_stack *a, t_stack *b)
 		min_cost_index = lst_min(_cost, b->length);
 		i = where_to_place(a, b->arr[min_cost_index]);
 		cost_move(a, b, &min_cost_index, &i);
+		free(_cost);
 	}
 	free(subseq);
 	add_remaining(a);

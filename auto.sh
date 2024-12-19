@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Number of unique random numbers to generate
-NUM_COUNT=100
+NUM_COUNT=500
 MAX0=0
 
 # Check if Python is installed

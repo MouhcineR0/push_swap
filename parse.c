@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:50:37 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/18 20:17:42 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:18:21 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,21 @@ int	is_duplicated(t_stack stack)
 	return (0);
 }
 
+void free_str(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		str[i] = NULL;
+		i++;
+	}
+	free(str);
+	str = NULL;
+}
+
 int	is_number(char *str)
 {
 	if (*str == '-' || *str == '+')
@@ -50,12 +65,14 @@ int	fill(char **a, t_stack *stack_a, int length)
 	int		i;
 	int		j;
 	char	**split;
+	char	**tmp;
 
 	i = 1;
 	j = 0;
 	while (i < length)
 	{
 		split = ft_split(a[i], ' ');
+		tmp = split;
 		if (!split)
 			return (0);
 		while (*split)
@@ -66,6 +83,7 @@ int	fill(char **a, t_stack *stack_a, int length)
 			(split)++;
 			j++;
 		}
+		free_str(tmp);
 		i++;
 	}
 	return (1);
@@ -76,20 +94,26 @@ int	verify_args(char **a, int length)
 	int		i;
 	int		j;
 	char	**split;
+	char	**tmp;
 
 	i = 1;
 	j = 0;
 	while (i < length)
 	{
 		split = ft_split(a[i], ' ');
+		tmp = split;
 		while (*split)
 		{
 			if (!is_number(*split) || ft_atoi(*split) > 2147483647
 				|| ft_atoi(*split) < -2147483648)
-				return (0);
+				{
+					free_str(tmp);
+					return (0);
+				}
 			(split)++;
 			j++;
 		}
+		free_str(tmp);
 		i++;
 	}
 	return (j);

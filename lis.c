@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 19:55:13 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/18 20:41:20 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/19 10:04:13 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ int	*lst_fill(int *arr, int length, int val)
 
 	i = 0;
 	arr = malloc(length * sizeof(int));
-	while (i++ < length)
+	while (i < length)
+	{
 		arr[i] = val;
+		i++;
+	}
 	return (arr);
 }
 
@@ -29,18 +32,21 @@ void	get_ls(int *arr, t_ls *two_lst, int length)
 	int	j;
 
 	i = 1;
-	while (i++ < length)
+	while (i < length)
 	{
 		j = 0;
-		while (j++ < i)
+		while (j < i)
 		{
 			if (arr[i] > arr[j] && two_lst->ls[i] < two_lst->ls[j] + 1)
 			{
 				two_lst->ls[i] = two_lst->ls[j] + 1;
 				two_lst->prev[i] = j;
 			}
+			j++;
 		}
+		i++;
 	}
+	// free(two_lst->ls);
 }
 
 void	count_maxlen(t_ls *two_lst, int *max_len, int *end_index, int size)
@@ -48,13 +54,14 @@ void	count_maxlen(t_ls *two_lst, int *max_len, int *end_index, int size)
 	int	i;
 
 	i = 0;
-	while (i++ < size)
+	while (i < size)
 	{
 		if (two_lst->ls[i] > *max_len)
 		{
 			*max_len = two_lst->ls[i];
 			*end_index = i;
 		}
+		i++;
 	}
 }
 
