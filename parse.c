@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:50:37 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/19 18:23:09 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/19 20:55:41 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,17 +115,4 @@ int	verify_args(char **a, int length)
 		i++;
 	}
 	return (j);
-}
-
-int	raise_error(void)
-{
-	ft_putstr_fd("Error\n", 2);
-	return (0);
-}
-
-int	free_arr(int *arr1, int *arr2)
-{
-	free(arr1);
-	free(arr2);
-	return (1);
 }

@@ -12,10 +12,10 @@ LIBFT_SRC = libft/ft_isalpha.c libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.
 PRINTF_SRC = printf/helper00.c printf/ft_putunsigned.c printf/ft_convertbase.c printf/ft_printf.c printf/ft_putnbr_fd_i.c printf/printarray.c \
 
 SRC_PUSHSWAP = main.c Instructions/Instruction1.c Instructions/Instruction2.c Instructions/Instruction3.c isSorted.c sort.c lst_cases.c \
-	lis.c handle_large.c handle_large0.c parse.c
+	lis.c handle_large.c handle_large0.c parse.c parse0.c
 
 BONUS  = bonus/getnextline/get_next_line.c bonus/checker.c Instructions/Instruction1.c Instructions/Instruction2.c Instructions/Instruction3.c \
-		 isSorted.c sort.c lst_cases.c lis.c handle_large.c handle_large0.c parse.c
+		 isSorted.c sort.c lst_cases.c lis.c handle_large.c handle_large0.c parse.c parce0.c
 
 FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
