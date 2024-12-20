@@ -6,11 +6,10 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 10:17:21 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/19 17:50:10 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:51:19 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "getnextline/get_next_line.h"
 #include "../push_swap.h"
 
 void	do_instruction(t_stack *a, t_stack *b, char *instraction)

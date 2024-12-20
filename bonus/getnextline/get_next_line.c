@@ -6,12 +6,11 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:00:25 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/18 15:13:17 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:51:09 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <libc.h>
+#include "../../push_swap.h"
 
 int	in_list(char *str, char c)
 {

@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:08:42 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/19 21:38:51 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:50:33 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 # include "printf/ft_printf.h"
 # include "libft/libft.h"
-# include <fcntl.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 2024
+# endif
 
 typedef struct t_stack
 {
@@ -62,5 +65,6 @@ int		fill(char **a, t_stack *stack_a, int length);
 int		is_duplicated(t_stack stack);
 void	free_str(char **str);
 int		free_arr(int *arr1, int *arr2);
+char	*get_next_line(int fd);
 
 #endif

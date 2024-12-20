@@ -17,7 +17,7 @@ SRC_PUSHSWAP = main.c Instructions/Instruction1.c Instructions/Instruction2.c In
 BONUS  = bonus/getnextline/get_next_line.c bonus/checker.c Instructions/Instruction1.c Instructions/Instruction2.c Instructions/Instruction3.c \
 		 isSorted.c sort.c lst_cases.c lis.c handle_large.c handle_large0.c parse.c parse0.c
 
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror
 
 CC = cc
 
@@ -59,10 +59,10 @@ Compiling :
 	@echo "$(COLOUR_GRAY)Linking ...$(COLOUR_END)"
 
 clean :
-	rm -f $(OBJS_PUSHSWAP) $(BONUS_OBJS) $(LIBFT_OBJS) $(PRINTF_OBJS)
+	rm -rf $(OBJS_PUSHSWAP) $(BONUS_OBJS) $(LIBFT_OBJS) $(PRINTF_OBJS)
 
 fclean : clean
-	rm -f push_swap checker
+	rm -rf push_swap checker
 
 re : fclean all
 
