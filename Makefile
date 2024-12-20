@@ -15,7 +15,7 @@ SRC_PUSHSWAP = main.c Instructions/Instruction1.c Instructions/Instruction2.c In
 	lis.c handle_large.c handle_large0.c parse.c parse0.c
 
 BONUS  = bonus/getnextline/get_next_line.c bonus/checker.c Instructions/Instruction1.c Instructions/Instruction2.c Instructions/Instruction3.c \
-		 isSorted.c sort.c lst_cases.c lis.c handle_large.c handle_large0.c parse.c parce0.c
+		 isSorted.c sort.c lst_cases.c lis.c handle_large.c handle_large0.c parse.c parse0.c
 
 FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
