@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:08:42 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/20 10:50:33 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:53:48 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct t_ls
 void	sa(t_stack *a, int print);
 void	sb(t_stack *b, int print);
 void	ss(t_stack *a, t_stack *b, int print);
-void	pa(t_stack *a, t_stack *b, int print); // push in stack a
-void	pb(t_stack *a, t_stack *b, int print); // push in stack b
+void	pa(t_stack *a, t_stack *b, int print);
+void	pb(t_stack *a, t_stack *b, int print);
 void	ra(t_stack *a, int print);
 void	rb(t_stack *b, int print);
 void	rr(t_stack *a, t_stack *b, int print);

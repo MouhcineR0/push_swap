@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:50:37 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/19 20:55:41 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/20 13:23:50 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,14 +101,12 @@ int	verify_args(char **a, int length)
 	{
 		split = ft_split(a[i], ' ');
 		tmp = split;
-		while (*split && j++)
+		while (*split)
 		{
 			if (!is_number(*split) || ft_atoi(*split) > 2147483647
 				|| ft_atoi(*split) < -2147483648)
-			{
-				free_str(tmp);
-				return (0);
-			}
+				return (free_str(tmp), 0);
+			j++;
 			(split)++;
 		}
 		free_str(tmp);
