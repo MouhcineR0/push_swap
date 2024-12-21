@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 11:57:59 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/19 21:24:51 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/21 14:22:43 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	sort(t_stack *a, t_stack *b)
 	else if (a->length == 4 || a->length == 5)
 		return (lst_case_4_5(a, b));
 	else if (a->length <= 10)
-		return (lst_large_case(a, b, 0));
+		return (lst_large_case(a, b, 10));
 	else if (a->length <= 50)
 		return (lst_large_case(a, b, 10));
 	else if (a->length <= 100)
