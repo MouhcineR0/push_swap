@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 10:17:21 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/23 11:21:00 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/23 18:01:43 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	swap_push(t_stack *a, t_stack *b)
 		else
 		{
 			free_str(instr);
-			return (ft_putstr_fd("Error\n", 2), 0);
+			return (0);
 		}
 	}
 	return (0);
@@ -92,7 +92,7 @@ int	main(int argc, char **argv)
 		return (raise_error());
 	a.arr = (int *)malloc(sizeof(int) * a.length);
 	b.arr = (int *)malloc(sizeof(int) * a.length);
-	if (!a.arr || !a.arr)
+	if (!a.arr || !b.arr)
 		return (raise_error());
 	if ((!fill((char **)argv, &a, argc)
 			|| is_duplicated(a)) && free_arr(a.arr, b.arr))

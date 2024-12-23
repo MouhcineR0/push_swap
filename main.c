@@ -6,7 +6,7 @@
 /*   By: rmouhcin <rmouhcin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 20:17:02 by rmouhcin          #+#    #+#             */
-/*   Updated: 2024/12/23 11:16:09 by rmouhcin         ###   ########.fr       */
+/*   Updated: 2024/12/23 17:59:45 by rmouhcin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	{
 		a.arr = (int *)malloc(sizeof(int) * a.length);
 		b.arr = (int *)malloc(sizeof(int) * a.length);
-		if ((!a.arr || !a.arr) && free_arr(a.arr, b.arr))
+		if ((!a.arr || !b.arr) && free_arr(a.arr, b.arr))
 			return (raise_error());
 		if (!fill((char **)argv, &a, argc) && free_arr(a.arr, b.arr))
 			return (raise_error());
